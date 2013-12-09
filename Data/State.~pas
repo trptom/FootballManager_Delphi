@@ -1,0 +1,37 @@
+unit State;
+
+interface
+
+uses
+  SysUtils, Classes;
+
+type
+  PState = ^CState;
+
+  TStatesList = class(TList)
+  private
+    function Get(Index: Integer): PState;
+  public
+    destructor Destroy; override;
+    function Add(Value: PState): Integer;
+    property Items[Index: Integer]: PState read Get; default;
+  end;
+
+  CState = class
+  private
+  public
+    name, shortName, shortcut: string;
+
+    constructor create(name, shortName, shortcut: string);
+  end;
+
+implementation
+
+constructor CState.create(name, shortName, shortcut: string);
+begin
+  Self.name := name;
+  Self.shortName := shortName;
+  Self.shortcut := shortcut;
+end;
+
+end.

@@ -1,0 +1,14 @@
+unit Serializable;
+
+interface
+
+type
+  CSerializable = class
+  public
+    function serialize: integer; virtual; abstract;
+    function deserialize: integer; virtual; abstract;
+  end;
+
+implementation
+
+end.
