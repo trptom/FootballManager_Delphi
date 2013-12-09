@@ -6,7 +6,9 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs,
 
-  World, State,
+  Utils,
+  
+  World, Continent, State,
   DataController;
 
 type
@@ -28,10 +30,15 @@ implementation
 {$R *.dfm}
 
 procedure TMainForm.FormCreate(Sender: TObject);
+var
+   outputList: TStringList;
 begin
   world := CWorld.Create;
 
   CDataController.save(world);
+
+//  outputList.Create;
+//  split(':', 'word:doc,txt,docx', outputList) ;
 end;
 
 end.

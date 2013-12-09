@@ -27,8 +27,8 @@ type
 
     constructor create(name, shortName, shortcut: string);
 
-    function serialize: integer; override;
-    function deserialize: integer; override;
+    function serialize: string; override;
+    function deserialize: string; override;
   end;
 
 implementation
@@ -65,18 +65,18 @@ begin
   Self.states := TStatesList.Create;
 end;
 
-function CContinent.serialize: integer;
+function CContinent.serialize: string;
 begin
   // TODO revize
 
-  result := 0;
+  result := '';
 end;
 
-function CContinent.deserialize: integer;
+function CContinent.deserialize: string;
 begin
   // TODO revize
 
-  result := 0;
+  result := '';
 end;
 
 end.

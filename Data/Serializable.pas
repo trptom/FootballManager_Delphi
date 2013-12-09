@@ -5,8 +5,8 @@ interface
 type
   CSerializable = class
   public
-    function serialize: integer; dynamic; abstract;
-    function deserialize: integer; dynamic; abstract;
+    function serialize: string; dynamic; abstract;
+    function deserialize: string; dynamic; abstract;
   end;
 
 implementation

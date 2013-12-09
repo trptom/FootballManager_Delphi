@@ -18,8 +18,8 @@ type
     
     constructor create;
 
-    function serialize: integer; override;
-    function deserialize: integer; override;
+    function serialize: string; override;
+    function deserialize: string; override;
   end;
 
 var pokus:CWorld;
@@ -31,18 +31,18 @@ begin
   continents := TContinentsList.create;
 end;
 
-function CContinent.serialize: integer;
+function CWorld.serialize: string;
 begin
   // TODO revize
 
-  result := 0;
+  result := 'Svet';
 end;
 
-function CContinent.deserialize: integer;
+function CWorld.deserialize: string;
 begin
   // TODO revize
 
-  result := 0;
+  result := '';
 end;
 
 end.

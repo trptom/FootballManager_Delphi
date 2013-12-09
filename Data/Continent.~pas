@@ -22,16 +22,13 @@ type
   CContinent = class(CSerializable)
   private
   public
-    property name: string read FPropertyString write FPropertyString;
-    property shortName: string read FPropertyString write FPropertyString;
-    property shortcut: string read FPropertyString write FPropertyString;
-//    name, shortName, shortcut: string;
+    name, shortName, shortcut: string;
     states: TStatesList;
 
     constructor create(name, shortName, shortcut: string);
 
-    function serialize: integer; override;
-    function deserialize: integer; override;
+    function serialize: string; override;
+    function deserialize: string; override;
   end;
 
 implementation
@@ -68,14 +65,14 @@ begin
   Self.states := TStatesList.Create;
 end;
 
-function CContinent.serialize: integer;
+function CContinent.serialize: string;
 begin
   // TODO revize
 
   result := 0;
 end;
 
-function CContinent.deserialize: integer;
+function CContinent.deserialize: string;
 begin
   // TODO revize
 

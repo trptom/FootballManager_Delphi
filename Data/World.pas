@@ -12,14 +12,14 @@ type
 
   CWorld = class(CSerializable)
   private
-
+  
   public
     continents: TContinentsList;
     
     constructor create;
 
-    function serialize: integer; override;
-    function deserialize: integer; override;
+    function serialize: string; override;
+    function deserialize: string; override;
   end;
 
 var pokus:CWorld;
@@ -31,18 +31,18 @@ begin
   continents := TContinentsList.create;
 end;
 
-function CWorld.serialize: integer;
+function CWorld.serialize: string;
 begin
   // TODO revize
 
-  result := 0;
+  result := 'Svet';
 end;
 
-function CWorld.deserialize: integer;
+function CWorld.deserialize: string;
 begin
   // TODO revize
 
-  result := 0;
+  result := '';
 end;
 
 end.

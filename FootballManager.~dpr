@@ -13,7 +13,7 @@ uses
   Player in 'Data\Player.pas',
   Serializable in 'Data\Serializable.pas',
 
-  DataController in 'Ctrl\DataController.pas',
+  DataController in 'Ctrl\DataController.pas';
 
 {$R *.res}
 
