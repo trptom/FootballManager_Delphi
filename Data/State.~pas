@@ -27,6 +27,29 @@ type
 
 implementation
 
+{------------------------------------------------------------------------------}
+
+function TStatesList.Add(Value: PState): Integer;
+begin
+  Result := inherited Add(Value);
+end;
+
+destructor TStatesList.Destroy;
+var
+  i: Integer;
+begin
+  for i := 0 to Count - 1 do
+    FreeMem(Items[i]);
+  inherited;
+end;
+
+function TStatesList.Get(Index: Integer): PState;
+begin
+  Result := PState(inherited Get(Index));
+end;
+
+{------------------------------------------------------------------------------}
+
 constructor CState.create(name, shortName, shortcut: string);
 begin
   Self.name := name;

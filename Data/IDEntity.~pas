@@ -3,39 +3,146 @@ unit IDEntity;
 interface
 
 uses
-  SysUtils, Classes;
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs,
+
+  Serializable;
 
 type
+  PIDCounterMap = ^CIDCounterMap;
+  PIDEntity = ^CIDEntity;
+  PIDCounterList = ^CIDCounterList;
 
-  CIDEntity = class
+  CIDCounterMap = class
+  public
+    className: string;
+    id: integer;
+
+    constructor create(className: string);
+  end;
+
+  CIDCounterList = class(TList)
+  private
+    private newItem: CIDCounterMap;
+    function Get(Index: Integer): PIDCounterMap;
+  public
+    destructor Destroy; override;
+    function Add(className: string): Integer; overload;
+    function Add(Value: PIDCounterMap): Integer; overload;
+    property Items[Index: Integer]: PIDCounterMap read Get; default;
+    function findByClassName(className: string): PIDCounterMap;
+  end;
+
+  CIDEntity = class(CSerializable)
   private
     id: integer;
+
+    function findOrCreateCounter(): PIDCounterMap;
   public
-    constructor create;
+    function getId: integer;
+    constructor create; overload;
+    constructor create(id: integer); overload;
   end;
 
 var
-  idCounter: TDictionary<string, integer>
+  idCounters: CIDCounterList;
 
 implementation
 
-idCounter = TDictionary.create;
+{------------------------------------------------------------------------------}
 
-class constructor CIDEntity.create;
+constructor CIDCounterMap.create(className: string);
 begin
-  CIDEntity.idCounter += 1;
-  Self.id := CIDEntity.idCounter;
+  Self.className := className;
 end;
 
-class function CIDEntity.GetID: integer;
+{------------------------------------------------------------------------------}
+
+function CIDCounterList.Add(className: string): Integer;
 begin
-  result := CIDEntity_ClassInt;
+  Self.newItem := CIDCounterMap.create(className);
+  Self.Add(@Self.newItem);
 end;
 
-class procedure CIDEntity.SetID(
-  const Value: integer);
+function CIDCounterList.Add(Value: PIDCounterMap): Integer;
 begin
-  CIDEntity_ClassInt := value;
+  Result := inherited Add(Value);
+end;
+
+destructor CIDCounterList.Destroy;
+var
+  i: Integer;
+begin
+  for i := 0 to Count - 1 do
+    FreeMem(Items[i]);
+  inherited;
+end;
+
+function CIDCounterList.Get(Index: Integer): PIDCounterMap;
+begin
+  Result := PIDCounterMap(inherited Get(Index));
+end;
+
+function CIDCounterList.findByClassName(className: string): PIDCounterMap;
+var
+  i: Integer;
+begin
+  showmessage('searching by name ' + className);
+  result := nil;
+  for i := 0 to Count - 1 do begin
+    showmessage('item: ' + Items[i].className);
+    if Items[i].className = className then begin
+      result := Items[i];
+    end;
+  end;
+end;
+
+{------------------------------------------------------------------------------}
+
+constructor CIDEntity.create;
+var
+  counter: PIDCounterMap;
+begin
+  counter := Self.findOrCreateCounter();
+
+  counter^.id := counter^.id + 1;
+
+  Self.id := counter^.id;
+end;
+
+constructor CIDEntity.create(id: integer);
+var
+  counter: PIDCounterMap;
+begin
+  Self.id := id;
+
+  counter := Self.findOrCreateCounter();
+  if (id > counter^.id) then begin
+    counter^.id := id;
+  end;
+end;
+
+function CIDEntity.findOrCreateCounter(): PIDCounterMap;
+var
+  counter: PIDCounterMap;
+begin
+  if idCounters = nil then begin
+    idCounters := CIDCounterList.Create;
+  end;
+
+  counter := idCounters.findByClassName(Self.ClassName);
+  if counter = nil then begin
+    showmessage('creating counter');
+    idCounters.Add(Self.ClassName);
+  end;
+
+  showmessage('length: ' + inttostr(idCounters.Count));
+  result := counter;
+end;
+
+function CIDEntity.getId(): integer;
+begin
+  result := Self.id;
 end;
 
 end.

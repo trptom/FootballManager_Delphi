@@ -34,6 +34,13 @@ var
    outputList: TStringList;
 begin
   world := CWorld.Create;
+  showmessage(inttostr(world.getId));
+
+  world := CWorld.Create(5);
+  showmessage(inttostr(world.getId));
+
+  world := CWorld.Create;
+  showmessage(inttostr(world.getId));
 
   CDataController.save(world);
 

@@ -5,18 +5,19 @@ interface
 uses
   SysUtils, Classes,
 
-  Continent, Serializable;
+  Continent, IDEntity;
 
 type
   PWorld = ^CWorld;
 
-  CWorld = class(CSerializable)
+  CWorld = class(CIDEntity)
   private
-
+  
   public
     continents: TContinentsList;
     
-    constructor create;
+    constructor create; overload;
+    constructor create(id: integer); overload;
 
     function serialize: string; override;
     function deserialize: string; override;
@@ -28,6 +29,15 @@ implementation
 
 constructor CWorld.create;
 begin
+  inherited;
+
+  continents := TContinentsList.create;
+end;
+
+constructor CWorld.create(id: integer);
+begin
+  inherited(id);
+
   continents := TContinentsList.create;
 end;
 

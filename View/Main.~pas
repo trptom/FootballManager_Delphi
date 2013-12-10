@@ -34,8 +34,15 @@ var
    outputList: TStringList;
 begin
   world := CWorld.Create;
+  showmessage(world.getId);
 
-//  CDataController.save(world);
+  world := CWorld.Create(5);
+  showmessage(world.getId);
+
+  world := CWorld.Create;
+  showmessage(world.getId);
+
+  CDataController.save(world);
 
 //  outputList.Create;
 //  split(':', 'word:doc,txt,docx', outputList) ;

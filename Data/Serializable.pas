@@ -3,12 +3,19 @@ unit Serializable;
 interface
 
 type
-  CSerializable = class
+  CSerializable = class(CIDEntity)
   public
     function serialize: string; dynamic; abstract;
     function deserialize: string; dynamic; abstract;
+
+    constructor create;
   end;
 
 implementation
+
+constructor CSerializable.create;
+begin
+  inherited;
+end;
 
 end.
