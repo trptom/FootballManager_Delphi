@@ -9,10 +9,11 @@ uses
   Utils,
   
   World, Continent, State,
-  DataController;
+  DataController, StdCtrls;
 
 type
   TMainForm = class(TForm)
+    Button1: TButton;
     procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
@@ -43,6 +44,8 @@ begin
   showmessage(inttostr(world.getId));
 
   CDataController.save(world);
+
+  MainForm.InsertControl(TEdit.Create(Self));
 
 //  outputList.Create;
 //  split(':', 'word:doc,txt,docx', outputList) ;
