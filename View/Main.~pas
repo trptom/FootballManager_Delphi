@@ -9,7 +9,7 @@ uses
   Utils,
   
   World, Continent, State,
-  DataController;
+  DataController, StdCtrls;
 
 type
   TMainForm = class(TForm)
@@ -33,16 +33,7 @@ procedure TMainForm.FormCreate(Sender: TObject);
 var
    outputList: TStringList;
 begin
-  world := CWorld.Create;
-  showmessage(inttostr(world.getId));
-
-  world := CWorld.Create(5);
-  showmessage(inttostr(world.getId));
-
-  world := CWorld.Create;
-  showmessage(inttostr(world.getId));
-
-  CDataController.save(world);
+  MainForm.InsertControl(TEdit.Create(Self));
 
 //  outputList.Create;
 //  split(':', 'word:doc,txt,docx', outputList) ;

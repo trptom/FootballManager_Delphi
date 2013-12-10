@@ -132,12 +132,10 @@ begin
 
   counter := idCounters.findByClassName(Self.ClassName);
   if counter = nil then begin
-    showmessage('creating counter');
     idCounters.Add(Self.ClassName);
     counter := idCounters.findByClassName(Self.ClassName);
   end;
 
-  showmessage('length: ' + inttostr(idCounters.Count));
   result := counter;
 end;
 

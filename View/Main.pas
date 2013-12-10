@@ -13,7 +13,6 @@ uses
 
 type
   TMainForm = class(TForm)
-    Button1: TButton;
     procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
@@ -34,17 +33,6 @@ procedure TMainForm.FormCreate(Sender: TObject);
 var
    outputList: TStringList;
 begin
-  world := CWorld.Create;
-  showmessage(inttostr(world.getId));
-
-  world := CWorld.Create(5);
-  showmessage(inttostr(world.getId));
-
-  world := CWorld.Create;
-  showmessage(inttostr(world.getId));
-
-  CDataController.save(world);
-
   MainForm.InsertControl(TEdit.Create(Self));
 
 //  outputList.Create;
