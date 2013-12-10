@@ -12,7 +12,9 @@ uses
   Serializable in 'Data\Serializable.pas',
   DataController in 'Ctrl\DataController.pas',
   Utils in 'Util\Utils.pas',
-  IDEntity in 'Data\IDEntity.pas';
+  IDEntity in 'Data\IDEntity.pas',
+  _P_MainMenu in 'View\_P_MainMenu.pas',
+  ContentPanel in 'View\ContentPanel.pas';
 
 {$R *.res}
 

@@ -4,12 +4,13 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs,
+  Dialogs, StdCtrls,
 
   Utils,
-  
+
   World, Continent, State,
-  DataController, StdCtrls;
+  DataController,
+  _P_MainMenu;
 
 type
   TMainForm = class(TForm)
@@ -33,7 +34,7 @@ procedure TMainForm.FormCreate(Sender: TObject);
 var
    outputList: TStringList;
 begin
-  MainForm.InsertControl(TEdit.Create(Self));
+  MainForm.InsertControl(CPanel_MainMenu.Create(Self));
 
 //  outputList.Create;
 //  split(':', 'word:doc,txt,docx', outputList) ;

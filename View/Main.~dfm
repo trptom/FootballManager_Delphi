@@ -3,7 +3,7 @@ object MainForm: TMainForm
   Top = 160
   Width = 851
   Height = 656
-  Caption = 'MainForm'
+  Caption = 'Del'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
