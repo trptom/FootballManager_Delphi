@@ -9,8 +9,9 @@ uses
   Utils,
 
   World, Continent, State,
-  DataController,
-  _P_MainMenu;
+  DataController, ExtCtrls,
+
+  Panel_MainMenu;
 
 type
   TMainForm = class(TForm)
@@ -34,10 +35,7 @@ procedure TMainForm.FormCreate(Sender: TObject);
 var
    outputList: TStringList;
 begin
-  MainForm.InsertControl(CPanel_MainMenu.Create(Self));
-
-//  outputList.Create;
-//  split(':', 'word:doc,txt,docx', outputList) ;
+  Self.InsertControl(TPanel_MainMenu.create(Self));
 end;
 
 end.

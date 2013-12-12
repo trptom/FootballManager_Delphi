@@ -13,8 +13,8 @@ uses
   DataController in 'Ctrl\DataController.pas',
   Utils in 'Util\Utils.pas',
   IDEntity in 'Data\IDEntity.pas',
-  _P_MainMenu in 'View\_P_MainMenu.pas',
-  ContentPanel in 'View\ContentPanel.pas';
+  Panel_MainMenu in 'View\Pages\Panel_MainMenu.pas',
+  PagePanel in 'View\Component\PagePanel.pas';
 
 {$R *.res}
 
