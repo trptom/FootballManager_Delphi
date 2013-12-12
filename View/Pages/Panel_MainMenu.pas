@@ -21,7 +21,7 @@ implementation
 
 constructor TPanel_MainMenu.create(AOwner: TForm);
 begin
-  inherited create(AOwner);
+  inherited create(AOwner, 'bg1.jpg');
 
   Self.but_newGame := TButton.create(Self);
   Self.but_loadGame := TButton.create(Self);
@@ -36,7 +36,7 @@ begin
   Self.but_newGame.Width := 200;
   Self.but_newGame.Height := 50;
   Self.but_newGame.Anchors := [];
-  Self.but_newGame.Caption := 'Nov8 hra';
+  Self.but_newGame.Caption := 'Nová hra';
 
   Self.but_loadGame.Left := 50;
   Self.but_loadGame.Top := 150;
