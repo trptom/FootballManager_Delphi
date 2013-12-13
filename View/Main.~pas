@@ -35,7 +35,7 @@ procedure TMainForm.FormCreate(Sender: TObject);
 var
    outputList: TStringList;
 begin
-  Self.InsertControl(TPanel_MainMenu.create(Self));
+  Self.InsertComponent(TPanel_MainMenu.create(Self));
 end;
 
 end.
