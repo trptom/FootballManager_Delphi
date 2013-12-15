@@ -11,31 +11,47 @@ uses
   World, Continent, State,
   DataController, ExtCtrls,
 
-  Panel_MainMenu;
+  PagePanel, Panel_MainMenu;
 
 type
+  TScreens = record
+    mainMenu: TPanel_MainMenu;
+  end;
+
   TMainForm = class(TForm)
     procedure FormCreate(Sender: TObject);
   private
-    { Private declarations }
+
+    procedure initScreens;
   public
-    { Public declarations }
+    screens: TScreens;
+
+    procedure setScreen(screen: TPagePanel);
   end;
 
 var
   MainForm: TMainForm;
-
-  world: CWorld;
 
 implementation
 
 {$R *.dfm}
 
 procedure TMainForm.FormCreate(Sender: TObject);
-var
-   outputList: TStringList;
 begin
-  Self.InsertComponent(TPanel_MainMenu.create(Self));
+  Self.initScreens;
+
+  Self.InsertControl(Self.screens.mainMenu);
+end;
+
+procedure TMainForm.initScreens;
+begin
+  Self.screens.MainMenu := TPanel_MainMenu.create(Self);
+end;
+
+procedure TMainForm.setScreen(screen: TPagePanel);
+begin
+  removeAllControls(Self);
+  Self.InsertControl(screen);
 end;
 
 end.

@@ -9,7 +9,6 @@ type
   TGridPanel = class(TPanel)
   private
     cols, rows: integer;
-    paddingHor, paddingVert: integer;
 
     procedure recount;
     procedure onResizeEvent(Sender: TObject); virtual;

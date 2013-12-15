@@ -32,7 +32,6 @@ begin
   Self.BorderStyle := bsNone;
   
   Self.OnResize := Self.onResizeEvent;
-//  Self.OnCo
 end;
 
 procedure TGridPanel.recount;

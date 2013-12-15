@@ -4,7 +4,7 @@ interface
 
 uses
   Forms, Classes, StdCtrls, Controls,
-  Utils,
+  Utils, ExtCtrls,
   
   PagePanel, GridPanel;
 

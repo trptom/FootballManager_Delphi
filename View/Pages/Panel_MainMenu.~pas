@@ -4,7 +4,7 @@ interface
 
 uses
   Forms, Classes, StdCtrls, Controls,
-  Utils,
+  Utils, ExtCtrls,
   
   PagePanel, GridPanel;
 
@@ -17,7 +17,7 @@ type
     but_loadGame: TButton;
     but_credits: TButton;
 
-    constructor create(AOwner: TForm);
+    constructor create(AOwner: TForm); override;
   end;
 
 implementation
@@ -31,10 +31,10 @@ begin
   Self.but_loadGame := TButton.create(Self.panel_buttons);
   Self.but_credits := TButton.create(Self.panel_buttons);
 
-  Self.InsertComponent(Self.panel_buttons);
-  Self.panel_buttons.InsertComponent(Self.but_newGame);
-  Self.panel_buttons.InsertComponent(Self.but_loadGame);
-  Self.panel_buttons.InsertComponent(Self.but_credits);
+  Self.InsertControl(Self.panel_buttons);
+  Self.panel_buttons.InsertControl(Self.but_newGame);
+  Self.panel_buttons.InsertControl(Self.but_loadGame);
+  Self.panel_buttons.InsertControl(Self.but_credits);
 
   Self.panel_buttons.Left := 10;
   Self.panel_buttons.Top := 10;

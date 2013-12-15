@@ -2,6 +2,7 @@ program FootballManager;
 
 uses
   Forms,
+  SysUtils,
   Main in 'View\Main.pas' {MainForm},
   World in 'Data\World.pas',
   State in 'Data\State.pas',
@@ -15,11 +16,14 @@ uses
   IDEntity in 'Data\IDEntity.pas',
   Panel_MainMenu in 'View\Pages\Panel_MainMenu.pas',
   PagePanel in 'View\Component\PagePanel.pas',
-  GridPanel in 'View\Component\GridPanel.pas';
+  GridPanel in 'View\Component\GridPanel.pas',
+  Controller in 'Ctrl\Controller.pas',
+  Panel_Examples in 'View\Pages\Panel_Examples.pas';
 
 {$R *.res}
 
 begin
+
   Application.Initialize;
   Application.CreateForm(TMainForm, MainForm);
   Application.Run;

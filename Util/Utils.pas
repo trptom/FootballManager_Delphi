@@ -20,6 +20,7 @@ type
 
 procedure split(delimiter: Char; str: string; listOfStrings: TStrings);
 procedure setPercPositionInCtrl(component: TControl; left,top,left2,top2: integer);
+function removeAllControls(component: TWinControl): integer;
 
 implementation
 
@@ -44,6 +45,18 @@ begin
   end else begin
     // TODO exception  
   end;
+end;
+
+function removeAllControls(component: TWinControl): integer;
+var
+  removed: integer;
+begin
+  removed := 0;
+  while component.ControlCount > 0 do begin
+    component.RemoveControl(component.Controls[0]);
+    removed := removed + 1;
+  end;
+  result := removed;
 end;
 
 end.
