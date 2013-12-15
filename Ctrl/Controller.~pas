@@ -1,0 +1,23 @@
+unit Controller;
+
+interface
+
+uses
+  Main, Panel_MainMenu;
+
+type
+  TController = class
+  private
+  public
+    class procedure initApplication(Sender: TObject);
+  end;
+
+implementation
+
+class procedure TController.initApplication(Sender: TObject);
+begin
+  SCREEN.MainMenu := TPanel_MainMenu.create(MainForm);
+//  result := 1
+end;
+
+end.

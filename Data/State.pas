@@ -3,7 +3,7 @@ unit State;
 interface
 
 uses
-  SysUtils, Classes;
+  SysUtils, Classes, Constants;
 
 type
   PState = ^CState;
@@ -19,10 +19,15 @@ type
 
   CState = class
   private
+    function getFlagFile(): string;
   public
     name, shortName, shortcut: string;
 
+    property flagFile: string read getFlagFile;
+
     constructor create(name, shortName, shortcut: string);
+
+    destructor Destroy; override;
   end;
 
 implementation
@@ -55,6 +60,20 @@ begin
   Self.name := name;
   Self.shortName := shortName;
   Self.shortcut := shortcut;
+end;
+
+destructor CState.Destroy;
+var
+  i: Integer;
+begin
+  // TODO
+
+  inherited;
+end;
+
+function CState.getFlagFile(): string;
+begin
+  result := _IMAGES_FOLDER + 'flags/' + Self.flagFile;
 end;
 
 end.

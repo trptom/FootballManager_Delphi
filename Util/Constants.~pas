@@ -1,0 +1,10 @@
+unit Constants;
+
+interface
+
+const
+  _IMAGES_FOLDER = '_data/images/'; 
+
+implementation
+
+end.

@@ -11,7 +11,7 @@ uses
   World, Continent, State,
   DataController, ExtCtrls,
 
-  PagePanel, Panel_MainMenu;
+  PagePanel, Panel_MainMenu, SelectTeamPanel;
 
 type
   TScreens = record
@@ -31,7 +31,6 @@ type
 
 var
   MainForm: TMainForm;
-
 implementation
 
 {$R *.dfm}

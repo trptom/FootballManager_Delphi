@@ -24,8 +24,11 @@ type
   public
     name, shortName, shortcut: string;
     states: TStatesList;
+    imageFileName: string;
 
     constructor create(name, shortName, shortcut: string);
+
+    destructor Destroy; override;
 
     function serialize: string; override;
     function deserialize: string; override;
@@ -63,6 +66,18 @@ begin
   Self.shortcut := shortcut;
 
   Self.states := TStatesList.Create;
+end;
+
+destructor CContinent.Destroy;
+var
+  a:integer;
+begin
+  for a := 1 to Self.states.Count do begin
+    Self.states.Items[a-1].Destroy;
+  end;
+  Self.states.Destroy;
+
+  inherited;
 end;
 
 function CContinent.serialize: string;

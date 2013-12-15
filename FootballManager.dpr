@@ -19,11 +19,12 @@ uses
   GridPanel in 'View\Component\GridPanel.pas',
   Controller in 'Ctrl\Controller.pas',
   Panel_Examples in 'View\Pages\Panel_Examples.pas';
+  Constants in 'Util\Constants.pas',
+  SelectTeamPanel in 'View\Component\SelectTeamPanel.pas';
 
 {$R *.res}
 
 begin
-
   Application.Initialize;
   Application.CreateForm(TMainForm, MainForm);
   Application.Run;
