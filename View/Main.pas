@@ -11,7 +11,7 @@ uses
   World, Continent, State,
   DataController, ExtCtrls,
 
-  Panel_MainMenu;
+  Panel_MainMenu, SelectTeamPanel;
 
 type
   TMainForm = class(TForm)
@@ -34,8 +34,15 @@ implementation
 procedure TMainForm.FormCreate(Sender: TObject);
 var
    outputList: TStringList;
+   world: CWorld;
+   cont: CContinent;
 begin
+  world := CWorld.create;
+  cont := CContinent.create('aaaaa', 'aaaa', 'aaa');
+  world.continents.Add(@cont);
+
   Self.InsertControl(TPanel_MainMenu.create(Self));
+  Self.InsertControl(TSelectTeamPanel.create(Self, world));
 end;
 
 end.

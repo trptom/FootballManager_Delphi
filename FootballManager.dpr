@@ -15,7 +15,9 @@ uses
   IDEntity in 'Data\IDEntity.pas',
   Panel_MainMenu in 'View\Pages\Panel_MainMenu.pas',
   PagePanel in 'View\Component\PagePanel.pas',
-  GridPanel in 'View\Component\GridPanel.pas';
+  GridPanel in 'View\Component\GridPanel.pas',
+  Constants in 'Util\Constants.pas',
+  SelectTeamPanel in 'View\Component\SelectTeamPanel.pas';
 
 {$R *.res}
 

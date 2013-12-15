@@ -3,7 +3,7 @@ unit PagePanel;
 interface
 
 uses
-  Forms, ExtCtrls, Classes, Controls, Graphics, Types, Jpeg;
+  Forms, ExtCtrls, Classes, Controls, Graphics, Types, Jpeg, Constants;
 
 type
   TPagePanel = class(TPanel)
@@ -36,7 +36,7 @@ begin
 
   if (bgImage <> '') then begin
     Self.bgImage := TPicture.Create;
-    Self.bgImage.LoadFromFile('_data/images/backgrounds/' + bgImage);
+    Self.bgImage.LoadFromFile(_IMAGES_FOLDER + 'backgrounds/' + bgImage);
   end;
 end;
 

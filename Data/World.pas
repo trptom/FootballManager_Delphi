@@ -19,6 +19,8 @@ type
     constructor create; overload;
     constructor create(id: integer); overload;
 
+    destructor Destroy; override;
+
     function serialize: string; override;
     function deserialize: string; override;
   end;
@@ -39,6 +41,18 @@ begin
   inherited Create(id);
 
   continents := TContinentsList.create;
+end;
+
+destructor CWorld.Destroy;
+var
+  a:integer;
+begin
+  for a := 1 to Self.continents.Count do begin
+    Self.continents.Items[a-1].Destroy;
+  end;
+  Self.continents.Destroy;
+
+  inherited;
 end;
 
 function CWorld.serialize: string;

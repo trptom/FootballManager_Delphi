@@ -14,7 +14,8 @@ uses
   Utils in 'Util\Utils.pas',
   IDEntity in 'Data\IDEntity.pas',
   Panel_MainMenu in 'View\Pages\Panel_MainMenu.pas',
-  PagePanel in 'View\Component\PagePanel.pas';
+  PagePanel in 'View\Component\PagePanel.pas',
+  GridPanel in 'View\Component\GridPanel.pas';
 
 {$R *.res}
 

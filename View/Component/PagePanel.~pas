@@ -3,18 +3,24 @@ unit PagePanel;
 interface
 
 uses
-  Forms, ExtCtrls, Classes, Controls, Graphics, Types, Jpeg;
+  Forms, ExtCtrls, Classes, Controls, Graphics, Types, Jpeg, Constants;
 
 type
   TPagePanel = class(TPanel)
   private
     bgImage: TPicture;
   public
-    constructor create(AOwner: TForm; bgImage: string);
+    constructor create(AOwner: TForm); overload;
+    constructor create(AOwner: TForm; bgImage: string); overload;
     procedure Paint; override;
   end;
 
 implementation
+
+constructor TPagePanel.create(AOwner: TForm);
+begin
+  Self.create(AOwner, '');
+end;
 
 constructor TPagePanel.create(AOwner: TForm; bgImage: string);
 begin
@@ -30,7 +36,7 @@ begin
 
   if (bgImage <> '') then begin
     Self.bgImage := TPicture.Create;
-    Self.bgImage.LoadFromFile('_data/images/backgrounds/' + bgImage);
+    Self.bgImage.LoadFromFile(IMAGES_FOLDER + 'backgrounds/' + bgImage);
   end;
 end;
 
