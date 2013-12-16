@@ -3,21 +3,20 @@ unit Controller;
 interface
 
 uses
-  Main, Panel_MainMenu;
+  Main, Panel_MainMenu, Dialogs;
 
 type
   TController = class
   private
   public
-    class procedure initApplication(Sender: TObject);
+    procedure setScreen(screen: TPagePanel);
   end;
 
 implementation
 
-class procedure TController.initApplication(Sender: TObject);
+procedure TController.setScreen(screen: TPagePanel);
 begin
-  SCREEN.MainMenu := TPanel_MainMenu.create(MainForm);
-//  result := 1
+  MainForm.setScreen(screen);
 end;
 
 end.

@@ -3,6 +3,7 @@ program FootballManager;
 uses
   Forms,
   SysUtils,
+  Dialogs,
   Main in 'View\Main.pas' {MainForm},
   World in 'Data\World.pas',
   State in 'Data\State.pas',
@@ -18,14 +19,30 @@ uses
   PagePanel in 'View\Component\PagePanel.pas',
   GridPanel in 'View\Component\GridPanel.pas',
   Controller in 'Ctrl\Controller.pas',
-  Panel_Examples in 'View\Pages\Panel_Examples.pas';
+  Panel_Examples in 'View\Pages\Panel_Examples.pas',
   Constants in 'Util\Constants.pas',
   SelectTeamPanel in 'View\Component\SelectTeamPanel.pas';
 
 {$R *.res}
 
+type
+  TScreens = record
+    mainMenu: TPanel_MainMenu;
+  end;
+
+var
+  SCREENS: TScreens;
+
+procedure initApp;
+begin
+  SCREENS.MainMenu := TPanel_MainMenu.create(MainForm);
+
+  MainForm.setScreen(SCREENS.mainMenu);
+end;
+
 begin
   Application.Initialize;
   Application.CreateForm(TMainForm, MainForm);
+  initApp;
   Application.Run;
 end.

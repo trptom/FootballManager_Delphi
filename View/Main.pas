@@ -14,18 +14,10 @@ uses
   PagePanel, Panel_MainMenu, SelectTeamPanel;
 
 type
-  TScreens = record
-    mainMenu: TPanel_MainMenu;
-  end;
 
   TMainForm = class(TForm)
-    procedure FormCreate(Sender: TObject);
   private
-
-    procedure initScreens;
   public
-    screens: TScreens;
-
     procedure setScreen(screen: TPagePanel);
   end;
 
@@ -34,18 +26,6 @@ var
 implementation
 
 {$R *.dfm}
-
-procedure TMainForm.FormCreate(Sender: TObject);
-begin
-  Self.initScreens;
-
-  Self.setScreen(Self.screens.mainMenu);
-end;
-
-procedure TMainForm.initScreens;
-begin
-  Self.screens.MainMenu := TPanel_MainMenu.create(Self);
-end;
 
 procedure TMainForm.setScreen(screen: TPagePanel);
 begin

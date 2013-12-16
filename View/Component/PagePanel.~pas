@@ -10,8 +10,8 @@ type
   private
     bgImage: TPicture;
   public
-    constructor create(AOwner: TForm); overload;
-    constructor create(AOwner: TForm; bgImage: string); overload;
+    constructor create(AOwner: TForm); overload; virtual;
+    constructor create(AOwner: TForm; bgImage: string); overload; virtual;
     procedure Paint; override;
   end;
 
@@ -36,7 +36,7 @@ begin
 
   if (bgImage <> '') then begin
     Self.bgImage := TPicture.Create;
-    Self.bgImage.LoadFromFile(IMAGES_FOLDER + 'backgrounds/' + bgImage);
+    Self.bgImage.LoadFromFile(_IMAGES_FOLDER + 'backgrounds/' + bgImage);
   end;
 end;
 
