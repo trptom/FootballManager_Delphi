@@ -8,7 +8,7 @@ uses
 type
   TPanel_Examples = class(TPagePanel)
 
-    private
+  private
 
   public
     constructor Create(AOwner: TComponent); override;
@@ -18,7 +18,7 @@ implementation
 
 constructor TPanel_Examples.Create(AOwner: TComponent);
 begin
-
+  inherited Create(AOwner);
 end;
 
 end.

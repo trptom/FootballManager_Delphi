@@ -21,21 +21,15 @@ uses
   Controller in 'Ctrl\Controller.pas',
   Panel_Examples in 'View\Pages\Panel_Examples.pas',
   Constants in 'Util\Constants.pas',
-  SelectTeamPanel in 'View\Component\SelectTeamPanel.pas';
+  SelectTeamPanel in 'View\Component\SelectTeamPanel.pas',
+  PageController in 'Ctrl\PageController.pas';
 
 {$R *.res}
 
-type
-  TScreens = record
-    mainMenu: TPanel_MainMenu;
-  end;
-
-var
-  SCREENS: TScreens;
-
 procedure initApp;
 begin
-  SCREENS.MainMenu := TPanel_MainMenu.create(MainForm);
+  SCREENS.mainMenu := PageController_MainMenu.createPage;
+  SCREENS.examples := TPanel_Examples.Create(MainForm);
 
   MainForm.setScreen(SCREENS.mainMenu);
 end;

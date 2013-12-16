@@ -3,13 +3,18 @@ unit Controller;
 interface
 
 uses
-  Main, Panel_MainMenu, Dialogs;
+  Main, Panel_MainMenu, Dialogs, PagePanel;
 
 type
   TController = class
   private
   public
     procedure setScreen(screen: TPagePanel);
+  end;
+
+  TPageController = class(TController)
+  public
+    function createPage:TPagePanel; virtual; abstract;
   end;
 
 implementation

@@ -11,9 +11,14 @@ uses
   World, Continent, State,
   DataController, ExtCtrls,
 
-  PagePanel, Panel_MainMenu, SelectTeamPanel;
+  PagePanel, Panel_MainMenu, Panel_Examples, SelectTeamPanel;
 
 type
+  TScreens = record
+    mainMenu: TPanel_MainMenu;
+
+    examples: TPanel_Examples;
+  end;
 
   TMainForm = class(TForm)
   private
@@ -23,6 +28,8 @@ type
 
 var
   MainForm: TMainForm;
+  SCREENS: TScreens;
+
 implementation
 
 {$R *.dfm}

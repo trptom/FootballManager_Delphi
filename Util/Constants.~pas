@@ -2,8 +2,11 @@ unit Constants;
 
 interface
 
+uses
+
 const
-  _IMAGES_FOLDER = '_data/images/'; 
+  _DATA_FOLDER = '_data/';
+  _IMAGES_FOLDER = _DATA_FOLDER + 'images/';
 
 implementation
 
