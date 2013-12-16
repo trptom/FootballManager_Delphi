@@ -10,15 +10,6 @@ uses
 type
   PContinent = ^CContinent;
 
-  TContinentsList = class(TList)
-  private
-    function Get(Index: Integer): PContinent;
-  public
-    destructor Destroy; override;
-    function Add(Value: PContinent): Integer;
-    property Items[Index: Integer]: PContinent read Get; default;
-  end;
-
   CContinent = class(CSerializable)
   private
   public
@@ -34,11 +25,20 @@ type
     function deserialize: string; override;
   end;
 
+  TContinentsList = class(TList)
+  private
+    function Get(Index: Integer): CContinent;
+  public
+    destructor Destroy; override;
+    function Add(Value: CContinent): Integer;
+    property Items[Index: Integer]: CContinent read Get; default;
+  end;
+
 implementation
 
 {------------------------------------------------------------------------------}
 
-function TContinentsList.Add(Value: PContinent): Integer;
+function TContinentsList.Add(Value: CContinent): Integer;
 begin
   Result := inherited Add(Value);
 end;
@@ -48,13 +48,13 @@ var
   i: Integer;
 begin
   for i := 0 to Count - 1 do
-    FreeMem(Items[i]);
+    Items[i].Destroy;
   inherited;
 end;
 
-function TContinentsList.Get(Index: Integer): PContinent;
+function TContinentsList.Get(Index: Integer): CContinent;
 begin
-  Result := PContinent(inherited Get(Index));
+  Result := CContinent(inherited Get(Index));
 end;
 
 {------------------------------------------------------------------------------}

@@ -8,15 +8,6 @@ uses
 type
   PState = ^CState;
 
-  TStatesList = class(TList)
-  private
-    function Get(Index: Integer): PState;
-  public
-    destructor Destroy; override;
-    function Add(Value: PState): Integer;
-    property Items[Index: Integer]: PState read Get; default;
-  end;
-
   CState = class
   private
     function getFlagFile(): string;
@@ -73,7 +64,7 @@ end;
 
 function CState.getFlagFile(): string;
 begin
-  result := IMAGES_FOLDER + 'flags/' + Self.flagFile;
+  result := _IMAGES_FOLDER + 'flags/' + Self.flagFile;
 end;
 
 end.

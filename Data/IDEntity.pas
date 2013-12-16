@@ -62,6 +62,8 @@ function CIDCounterList.Add(className: string): Integer;
 begin
   Self.newItem := CIDCounterMap.create(className);
   Self.Add(@Self.newItem);
+
+  result := 0;
 end;
 
 function CIDCounterList.Add(Value: PIDCounterMap): Integer;
@@ -87,10 +89,8 @@ function CIDCounterList.findByClassName(className: string): PIDCounterMap;
 var
   i: Integer;
 begin
-  showmessage('searching by name ' + className);
   result := nil;
   for i := 0 to Count - 1 do begin
-    showmessage('item: ' + Items[i].className);
     if Items[i].className = className then begin
       result := Items[i];
     end;

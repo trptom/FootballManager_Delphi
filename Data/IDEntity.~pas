@@ -87,10 +87,8 @@ function CIDCounterList.findByClassName(className: string): PIDCounterMap;
 var
   i: Integer;
 begin
-  showmessage('searching by name ' + className);
   result := nil;
   for i := 0 to Count - 1 do begin
-    showmessage('item: ' + Items[i].className);
     if Items[i].className = className then begin
       result := Items[i];
     end;
@@ -132,12 +130,10 @@ begin
 
   counter := idCounters.findByClassName(Self.ClassName);
   if counter = nil then begin
-    showmessage('creating counter');
     idCounters.Add(Self.ClassName);
     counter := idCounters.findByClassName(Self.ClassName);
   end;
 
-  showmessage('length: ' + inttostr(idCounters.Count));
   result := counter;
 end;
 
