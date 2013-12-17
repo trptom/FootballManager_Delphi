@@ -1,8 +1,8 @@
 object MainForm: TMainForm
   Left = 444
   Top = 178
-  Width = 808
-  Height = 634
+  ClientWidth = 800
+  ClientHeight = 600
   BorderIcons = [biSystemMenu, biMaximize]
   Caption = 'TPS Football Manager 1'
   Color = clBtnFace
