@@ -22,20 +22,38 @@ uses
   Panel_Examples in 'View\Pages\Panel_Examples.pas',
   Constants in 'Util\Constants.pas',
   SelectTeamPanel in 'View\Component\SelectTeamPanel.pas',
-  PageController in 'Ctrl\PageController.pas';
+  PageController in 'Ctrl\PageController.pas',
+  Panel_GameSettings in 'View\Pages\Panel_GameSettings.pas',
+  Panel_Credits in 'View\Pages\Panel_Credits.pas',
+  Component_Button in 'View\Component\Component_Button.pas',
+  Panel_Intro in 'View\Pages\Panel_Intro.pas',
+  WMP in 'Lib\WMP.pas';
 
 {$R *.res}
 
+procedure evt_introClick(Sender: TObject);
+begin
+end;
+
 procedure initApp;
 begin
+  SCREENS.intro := PageController_Intro.createPage;
   SCREENS.mainMenu := PageController_MainMenu.createPage;
+  SCREENS.credits := PageController_Credits.createPage;
   SCREENS.examples := TPanel_Examples.Create(MainForm);
 
-  MainForm.setScreen(SCREENS.mainMenu);
+  MainForm.InsertControl(SCREENS.intro);
+  MainForm.InsertControl(SCREENS.mainMenu);
+  MainForm.InsertControl(SCREENS.credits);
+  MainForm.InsertControl(SCREENS.examples);
+
+  MainForm.setScreen(SCREENS.intro);
+  SCREENS.intro.play;
 end;
 
 begin
   Application.Initialize;
+  Application.Title := 'TPS Soccer Manager';
   Application.CreateForm(TMainForm, MainForm);
   initApp;
   Application.Run;

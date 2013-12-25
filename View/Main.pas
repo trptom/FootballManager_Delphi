@@ -11,16 +11,22 @@ uses
   World, Continent, State,
   DataController, ExtCtrls,
 
-  PagePanel, Panel_MainMenu, Panel_Examples, SelectTeamPanel;
+  PagePanel, Panel_MainMenu, Panel_Examples, Panel_Credits, Panel_GameSettings,
+  Panel_Intro,
+  SelectTeamPanel, MPlayer;
 
 type
   TScreens = record
+    intro: TPanel_Intro;
     mainMenu: TPanel_MainMenu;
+    credits: TPanel_Credits;
+    gameSettings: TPanel_GameSettings;
 
     examples: TPanel_Examples;
   end;
 
   TMainForm = class(TForm)
+    procedure FormCreate(Sender: TObject);
   private
   public
     procedure setScreen(screen: TPagePanel);
@@ -36,8 +42,23 @@ implementation
 
 procedure TMainForm.setScreen(screen: TPagePanel);
 begin
-  removeAllControls(Self);
-  Self.InsertControl(screen);
+  // hide old
+  hideAllControls(Self);
+
+  // set size of current frame
+  screen.Left := 0;
+  screen.Top := 0;
+  screen.Width := Self.ClientWidth;
+  screen.Height := Self.ClientHeight;
+
+  // show new
+  screen.Visible := true;
+  
+end;
+
+procedure TMainForm.FormCreate(Sender: TObject);
+begin
+  Self.DoubleBuffered := true;
 end;
 
 end.

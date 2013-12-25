@@ -10,8 +10,8 @@ type
   private
     bgImage: TPicture;
   public
-    constructor create(AOwner: TForm); overload; virtual;
-    constructor create(AOwner: TForm; bgImage: string); overload; virtual;
+    constructor create(AOwner: TForm); overload;
+    constructor create(AOwner: TForm; bgImage: string); overload;
     procedure Paint; override;
   end;
 

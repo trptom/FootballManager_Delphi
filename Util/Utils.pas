@@ -21,6 +21,7 @@ type
 procedure split(delimiter: Char; str: string; listOfStrings: TStrings);
 procedure setPercPositionInCtrl(component: TControl; left,top,left2,top2: integer);
 function removeAllControls(component: TWinControl): integer;
+procedure hideAllControls(component: TWinControl);
 
 implementation
 
@@ -57,6 +58,15 @@ begin
     removed := removed + 1;
   end;
   result := removed;
+end;
+
+procedure hideAllControls(component: TWinControl);
+var
+  a: integer;
+begin
+  for a := 1 to component.ControlCount do begin
+    component.Controls[a-1].Visible := false;
+  end;
 end;
 
 end.

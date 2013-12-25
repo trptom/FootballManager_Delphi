@@ -1,0 +1,73 @@
+unit Panel_Intro;
+
+interface
+
+uses
+  Forms, Classes, StdCtrls, Controls, SysUtils, Dialogs,
+  Utils, ExtCtrls, Constants, MPlayer, WMP, Types,
+
+  PagePanel,
+  Component_Button;
+
+type
+  TPanel_Intro = class(TPagePanel)
+  private
+    player: TMediaPlayer;
+
+    procedure updateDisplayRect;
+    procedure evt_resize(Sender: TObject);
+  public
+    constructor create(AOwner: TForm);
+    procedure play;
+    procedure stop;
+  end;
+
+implementation
+
+constructor TPanel_Intro.create(AOwner: TForm);
+begin
+  inherited create(AOwner{, 'bg_intro.jpg'});
+
+  Self.OnResize := Self.evt_resize;
+
+  Self.player := TMediaPlayer.Create(Self);
+  Self.player.Display := Self;
+  Self.player.Visible := false;
+  Self.player.FileName := 'C:\Users\tomas.praslicak\Documents\GitHub\FootballManager_Delphi\_data\video\intro.wmv';
+
+  Self.InsertControl(Self.player);
+end;
+
+procedure TPanel_Intro.play;
+begin
+  Self.player.Open;
+  Self.player.Play;
+  Self.updateDisplayRect;
+end;
+
+procedure TPanel_Intro.stop;
+var drect: TRect;
+begin
+  Self.InsertControl(Self.player);
+  Self.player.Open;
+  Self.player.Play;
+  drect.Left := 0;
+  drect.Top := 0;
+  drect.Right := Self.Width;
+  drect.Bottom := Self.Height;
+  Self.player.DisplayRect := drect;
+end;
+
+procedure TPanel_Intro.updateDisplayRect;
+var
+  drect: TRect;
+begin
+  Self.player.DisplayRect := Self.GetClientRect;
+end;
+
+procedure TPanel_Intro.evt_resize(Sender: TObject);
+begin
+  Self.updateDisplayRect;
+end;
+
+end.

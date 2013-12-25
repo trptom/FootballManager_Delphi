@@ -33,6 +33,7 @@ begin
   Self.Height := AOwner.ClientHeight;
 
   Self.BorderStyle := bsNone;
+  Self.BorderWidth := 0;
 
   if (bgImage <> '') then begin
     Self.bgImage := TPicture.Create;

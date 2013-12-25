@@ -1,8 +1,8 @@
 object MainForm: TMainForm
   Left = 444
   Top = 178
-  ClientWidth = 800
-  ClientHeight = 600
+  Width = 816
+  Height = 638
   BorderIcons = [biSystemMenu, biMaximize]
   Caption = 'TPS Football Manager 1'
   Color = clBtnFace
@@ -14,6 +14,8 @@ object MainForm: TMainForm
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
+  WindowState = wsMaximized
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
 end

@@ -3,7 +3,7 @@ unit GridPanel;
 interface
 
 uses
-  Classes, ExtCtrls, Utils, Forms, Controls, Dialogs;
+  Classes, ExtCtrls, Utils, Forms, Controls, Dialogs, SysUtils;
 
 type
   TGridPanel = class(TPanel)
@@ -11,7 +11,7 @@ type
     cols, rows: integer;
 
     procedure recount;
-    procedure onResizeEvent(Sender: TObject); virtual;
+    procedure evt_resize(Sender: TObject); virtual;
   public
     constructor create(AOwner: TComponent; cols, rows: integer);
     procedure insertControl(AControl: TControl);
@@ -31,7 +31,7 @@ begin
 
   Self.BorderStyle := bsNone;
   
-  Self.OnResize := Self.onResizeEvent;
+  Self.OnResize := Self.evt_resize;
 end;
 
 procedure TGridPanel.recount;
@@ -64,7 +64,7 @@ begin
   end;
 end;
 
-procedure TGridPanel.onResizeEvent(Sender: TObject);
+procedure TGridPanel.evt_resize(Sender: TObject);
 begin
   Self.recount;
 end;

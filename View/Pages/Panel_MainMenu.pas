@@ -38,8 +38,8 @@ begin
 
   Self.panel_buttons.Left := 10;
   Self.panel_buttons.Top := 10;
-  Self.panel_buttons.Width := 780;
-  Self.panel_buttons.Height := 580;
+  Self.panel_buttons.Width := Self.Width-20;
+  Self.panel_buttons.Height := Self.Height-20;
   Self.panel_buttons.Anchors := [ akLeft, akTop, akRight, akBottom ];
 
   {Self.but_newGame.Left := 50;
