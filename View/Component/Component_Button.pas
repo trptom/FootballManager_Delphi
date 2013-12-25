@@ -88,6 +88,7 @@ procedure TFMButton.evt_mouseUp(Sender: TObject; Button: TMouseButton;
 begin
   Self.but_pressed := false;
   Self.Paint;
+  Self.MouseMove(Shift, X, Y);
 end;
 
 procedure TFMButton.evt_mouseMove(Sender: TObject; Shift: TShiftState; X,
@@ -104,6 +105,7 @@ begin
   end else begin
     if (x >= Self.Width) or (y >= Self.Height) or (x < 0) or (y < 0) then begin
       Self.but_mouseOver := false;
+      Self.but_pressed := false;
       SetCaptureControl(Self.previousControl);
       Self.previousControl := nil;
       Self.Paint;

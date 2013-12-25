@@ -88,6 +88,7 @@ procedure TFMButton.evt_mouseUp(Sender: TObject; Button: TMouseButton;
 begin
   Self.but_pressed := false;
   Self.Paint;
+  Self.MouseMove(Shift, X, Y);
 end;
 
 procedure TFMButton.evt_mouseMove(Sender: TObject; Shift: TShiftState; X,
@@ -118,7 +119,6 @@ var
   font: TFont;
 begin
   if Self.firstPaint = true then begin
-  showmessage('firstpaint');
     Self.recountSize(Self.Anchors);
     Self.firstPaint := false;
   end;

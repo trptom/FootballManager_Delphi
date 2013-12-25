@@ -26,6 +26,7 @@ type
   end;
 
   TMainForm = class(TForm)
+    procedure FormCreate(Sender: TObject);
   private
   public
     procedure setScreen(screen: TPagePanel);
@@ -52,6 +53,12 @@ begin
 
   // show new
   screen.Visible := true;
+  
+end;
+
+procedure TMainForm.FormCreate(Sender: TObject);
+begin
+  Self.DoubleBuffered := true;
 end;
 
 end.

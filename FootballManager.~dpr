@@ -26,7 +26,8 @@ uses
   Panel_GameSettings in 'View\Pages\Panel_GameSettings.pas',
   Panel_Credits in 'View\Pages\Panel_Credits.pas',
   Component_Button in 'View\Component\Component_Button.pas',
-  Panel_Intro in 'View\Pages\Panel_Intro.pas';
+  Panel_Intro in 'View\Pages\Panel_Intro.pas',
+  WMP in 'Lib\WMP.pas';
 
 {$R *.res}
 
@@ -52,6 +53,7 @@ end;
 
 begin
   Application.Initialize;
+  Application.Title := 'TPS Soccer Manager';
   Application.CreateForm(TMainForm, MainForm);
   initApp;
   Application.Run;

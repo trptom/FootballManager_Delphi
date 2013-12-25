@@ -26,6 +26,7 @@ type
   end;
 
   TMainForm = class(TForm)
+    Panel1: TPanel;
     procedure FormCreate(Sender: TObject);
   private
   public

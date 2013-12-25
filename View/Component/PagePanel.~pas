@@ -27,12 +27,17 @@ begin
   inherited create(AOwner);
 
   Self.Anchors := [ akLeft, akTop, akRight, akBottom ];
+  Self.BevelInner := bvNone;
+  Self.BevelOuter := bvNone;
+  Self.BevelWidth := 0;
+  Self.Ctl3D := false;
   Self.Left := 0;
   Self.Top := 0;
   Self.Width := AOwner.ClientWidth;
   Self.Height := AOwner.ClientHeight;
 
   Self.BorderStyle := bsNone;
+  Self.BorderWidth := 0;
 
   if (bgImage <> '') then begin
     Self.bgImage := TPicture.Create;

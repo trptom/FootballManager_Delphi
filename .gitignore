@@ -8,3 +8,4 @@ __history
 *.exe
 *.dll
 bin/*
+/_data/video/intro.wmv

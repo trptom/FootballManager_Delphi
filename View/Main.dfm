@@ -18,4 +18,13 @@ object MainForm: TMainForm
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
+  object Panel1: TPanel
+    Left = 160
+    Top = 160
+    Width = 185
+    Height = 41
+    BevelOuter = bvNone
+    Caption = 'Panel1'
+    TabOrder = 0
+  end
 end

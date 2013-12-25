@@ -47,8 +47,12 @@ begin
   MainForm.InsertControl(SCREENS.credits);
   MainForm.InsertControl(SCREENS.examples);
 
-  MainForm.setScreen(SCREENS.intro);
-  SCREENS.intro.play;
+  if SCREENS.intro.introExists then begin
+    MainForm.setScreen(SCREENS.intro);
+    SCREENS.intro.play;
+  end else begin
+    MainForm.setScreen(SCREENS.mainMenu);
+  end;
 end;
 
 begin

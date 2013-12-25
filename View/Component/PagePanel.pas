@@ -27,6 +27,9 @@ begin
   inherited create(AOwner);
 
   Self.Anchors := [ akLeft, akTop, akRight, akBottom ];
+  Self.BevelInner := bvNone;
+  Self.BevelOuter := bvNone;
+  Self.Ctl3D := false;
   Self.Left := 0;
   Self.Top := 0;
   Self.Width := AOwner.ClientWidth;
