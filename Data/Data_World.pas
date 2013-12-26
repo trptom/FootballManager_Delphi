@@ -8,9 +8,9 @@ uses
   Data_Continent, Data_IDEntity;
 
 type
-  PWorld = ^CWorld;
+  PWorld = ^TWorld;
 
-  CWorld = class(CIDEntity)
+  TWorld = class(TIDEntity)
   private
   
   public
@@ -25,25 +25,25 @@ type
     function deserialize: string; override;
   end;
 
-var pokus:CWorld;
+var pokus:TWorld;
 
 implementation
 
-constructor CWorld.create;
+constructor TWorld.create;
 begin
   inherited;
 
   continents := TContinentsList.create;
 end;
 
-constructor CWorld.create(id: integer);
+constructor TWorld.create(id: integer);
 begin
   inherited Create(id);
 
   continents := TContinentsList.create;
 end;
 
-destructor CWorld.Destroy;
+destructor TWorld.Destroy;
 var
   a:integer;
 begin
@@ -55,14 +55,14 @@ begin
   inherited;
 end;
 
-function CWorld.serialize: string;
+function TWorld.serialize: string;
 begin
   // TODO revize
 
   result := 'Svet';
 end;
 
-function CWorld.deserialize: string;
+function TWorld.deserialize: string;
 begin
   // TODO revize
 

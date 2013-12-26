@@ -1,4 +1,4 @@
-unit IDEntity;
+unit Data_IDEntity;
 
 interface
 
@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs,
 
-  Serializable;
+  Data_Serializable;
 
 type
   PIDCounterMap = ^CIDCounterMap;
