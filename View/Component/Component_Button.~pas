@@ -3,7 +3,8 @@ unit Component_Button;
 interface
 
 uses
-  Controls, ExtCtrls, Classes, StdCtrls, Graphics, Types, Jpeg, Constants, PNGImage, Forms, Dialogs, SysUtils;
+  Controls, ExtCtrls, Classes, StdCtrls, Graphics, Types, Jpeg, Constants,
+  PNGImage, Forms, Dialogs, SysUtils;
 
 type
   TFMButtonImages = record
@@ -105,6 +106,7 @@ begin
   end else begin
     if (x >= Self.Width) or (y >= Self.Height) or (x < 0) or (y < 0) then begin
       Self.but_mouseOver := false;
+      Self.but_pressed := false;
       SetCaptureControl(Self.previousControl);
       Self.previousControl := nil;
       Self.Paint;

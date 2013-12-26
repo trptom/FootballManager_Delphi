@@ -1,12 +1,9 @@
-unit Serializable;
+unit Data_Serializable;
 
 interface
 
-uses
-  IDEntity;
-
 type
-  CSerializable = class(CIDEntity)
+  CSerializable = class
   public
     function serialize: string; dynamic; abstract;
     function deserialize: string; dynamic; abstract;

@@ -3,8 +3,11 @@ unit Panel_Examples;
 interface
 
 uses
-  PagePanel, Classes, SelectTeamPanel, World, Continent, Controls, Graphics,
-  Types, Forms, Dialogs;
+  Classes, Controls, Graphics, Types, Forms, Dialogs,
+
+  Data_World, Data_Continent,
+
+  Component_SelectTeamPanel, Component_PagePanel;
 
 type
   TPanel_Examples = class(TPagePanel)

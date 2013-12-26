@@ -1,9 +1,13 @@
-unit SelectTeamPanel;
+unit Component_SelectTeamPanel;
 
 interface
 
 uses
-  Classes, Controls, StdCtrls, ExtCtrls, Grids, GridPanel, World, Continent, Dialogs, SysUtils;
+  Classes, Controls, StdCtrls, ExtCtrls, Grids, Dialogs, SysUtils,
+
+  Data_World, Data_Continent,
+
+  Component_GridPanel;
 
 type
   TSelectTeamPanel = class(TPanel)

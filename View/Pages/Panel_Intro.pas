@@ -4,10 +4,11 @@ interface
 
 uses
   Forms, Classes, StdCtrls, Controls, SysUtils, Dialogs, Graphics,
-  Utils, ExtCtrls, Constants, MPlayer, WMP, Types, Math,
+  ExtCtrls, MPlayer, Types, Math,
 
-  PagePanel,
-  Component_Button;
+  _Utils, _Constants,
+
+  Component_PagePanel, Component_Button;
 
 type
   TPanel_Intro = class(TPagePanel)

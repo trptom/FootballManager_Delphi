@@ -1,11 +1,9 @@
-unit Utils;
+unit _Utils;
 
 interface
 
 uses
-  SysUtils, Classes, Controls, ExtCtrls,
-
-  Dialogs;
+  SysUtils, Classes, Controls, ExtCtrls, Dialogs;
 
 const
   Width_valueType_perc = 0;
@@ -64,7 +62,7 @@ procedure hideAllControls(component: TWinControl);
 var
   a: integer;
 begin
-  for var a := 1 to component.ControlCount do begin
+  for a := 1 to component.ControlCount do begin
     component.Controls[a-1].Visible := false;
   end;
 end;

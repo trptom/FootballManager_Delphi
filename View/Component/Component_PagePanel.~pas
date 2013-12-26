@@ -1,4 +1,4 @@
-unit PagePanel;
+unit Component_PagePanel;
 
 interface
 

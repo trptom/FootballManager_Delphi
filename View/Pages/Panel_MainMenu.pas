@@ -3,10 +3,11 @@ unit Panel_MainMenu;
 interface
 
 uses
-  Forms, Classes, StdCtrls, Controls,
-  Utils, ExtCtrls,
+  Forms, Classes, StdCtrls, Controls, ExtCtrls,
+
+  _Utils,
   
-  PagePanel, GridPanel;
+  Component_PagePanel, Component_GridPanel;
 
 type
   TPanel_MainMenu = class(TPagePanel)

@@ -1,4 +1,4 @@
-unit IDEntity;
+unit Data_IDEntity;
 
 interface
 
@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs,
 
-  Serializable;
+  Data_Serializable;
 
 type
   PIDCounterMap = ^CIDCounterMap;
@@ -62,6 +62,8 @@ function CIDCounterList.Add(className: string): Integer;
 begin
   Self.newItem := CIDCounterMap.create(className);
   Self.Add(@Self.newItem);
+
+  result := 0;
 end;
 
 function CIDCounterList.Add(Value: PIDCounterMap): Integer;

@@ -3,7 +3,10 @@ unit Component_Button;
 interface
 
 uses
-  Controls, ExtCtrls, Classes, StdCtrls, Graphics, Types, Jpeg, Constants, PNGImage, Forms, Dialogs, SysUtils;
+  Controls, ExtCtrls, Classes, StdCtrls, Graphics, Types, Jpeg, PNGImage, Forms,
+  Dialogs, SysUtils,
+
+  _Constants;
 
 type
   TFMButtonImages = record

@@ -3,8 +3,9 @@ unit Panel_MainMenu;
 interface
 
 uses
-  Forms, Classes, StdCtrls, Controls,
-  Utils, ExtCtrls,
+  Forms, Classes, StdCtrls, Controls, ExtCtrls,
+
+  _Utils,
   
   PagePanel, GridPanel;
 
@@ -36,7 +37,7 @@ begin
   Self.panel_buttons.InsertControl(Self.but_loadGame);
   Self.panel_buttons.InsertControl(Self.but_credits);
 
-  setPercPositionInCtrl(Self.panel_buttons, 25, 40, 60, 75);
+  setPercPositionInCtrl(Self.panel_buttons, 25, 40, 75, 60);
   Self.panel_buttons.Anchors := [];
 
   Self.but_newGame.Anchors := [];

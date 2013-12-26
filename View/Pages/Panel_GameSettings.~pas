@@ -3,6 +3,9 @@ unit Panel_GameSettings;
 interface
 
 uses
+  Forms, Classes, StdCtrls, Controls,
+  Utils, ExtCtrls,
+  
   PagePanel;
 
 type

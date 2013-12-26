@@ -1,9 +1,13 @@
-unit SelectTeamPanel;
+unit Component_SelectTeamPanel;
 
 interface
 
 uses
-  Classes, Controls, StdCtrls, ExtCtrls, Grids, GridPanel, World, Continent, Dialogs, SysUtils;
+  Classes, Controls, StdCtrls, ExtCtrls, Grids, Dialogs, SysUtils,
+
+  Data_World, Data_Continent,
+
+  Component_GridPanel
 
 type
   TSelectTeamPanel = class(TPanel)
@@ -56,7 +60,7 @@ begin
   Self.combo_leagues.Top := Self.combo_states.Top + Self.combo_states.Height + 10;
   Self.combo_leagues.Width := Self.Width;
   Self.combo_leagues.Anchors := [ akLeft, akTop, akRight ];
-  Self.combo_states.style := csDropDownList;
+  Self.combo_leagues.style := csDropDownList;
 
   Self.grid_teams.Left := 0;
   Self.grid_teams.Top := Self.combo_leagues.Top + Self.combo_leagues.Height + 10;

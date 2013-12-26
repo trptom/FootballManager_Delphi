@@ -1,9 +1,11 @@
-unit GridPanel;
+unit Component_GridPanel;
 
 interface
 
 uses
-  Classes, ExtCtrls, Utils, Forms, Controls, Dialogs, SysUtils;
+  Classes, ExtCtrls, Forms, Controls, Dialogs, SysUtils,
+
+  _Utils;
 
 type
   TGridPanel = class(TPanel)

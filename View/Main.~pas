@@ -4,16 +4,18 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls,
+  Dialogs, StdCtrls, ExtCtrls, MPlayer,
 
-  Utils,
+  _Utils,
 
-  World, Continent, State,
-  DataController, ExtCtrls,
+  Data_World, Data_Continent, Data_State,
 
-  PagePanel, Panel_MainMenu, Panel_Examples, Panel_Credits, Panel_GameSettings,
-  Panel_Intro,
-  SelectTeamPanel, MPlayer;
+  Controller_Data,
+
+  Component_SelectTeamPanel, Component_PagePanel,
+
+  Panel_MainMenu, Panel_Examples, Panel_Credits, Panel_GameSettings,
+  Panel_Intro;
 
 type
   TScreens = record
@@ -26,7 +28,6 @@ type
   end;
 
   TMainForm = class(TForm)
-    ComboBox1: TComboBox;
     procedure FormCreate(Sender: TObject);
   private
   public
@@ -36,6 +37,7 @@ type
 var
   MainForm: TMainForm;
   SCREENS: TScreens;
+  Fout: File of TWorld;
 
 implementation
 
@@ -43,6 +45,7 @@ implementation
 
 procedure TMainForm.setScreen(screen: TPagePanel);
 begin
+  // callback - before
   screen.beforeShow();
 
   // hide old
@@ -51,6 +54,7 @@ begin
   // show new
   screen.Visible := true;
 
+  // callback - after
   screen.afterShow();
 end;
 

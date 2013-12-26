@@ -1,11 +1,11 @@
-unit World;
+unit Data_World;
 
 interface
 
 uses
   SysUtils, Classes,
 
-  Continent, IDEntity;
+  Data_Continent, Data_IDEntity;
 
 type
   PWorld = ^CWorld;

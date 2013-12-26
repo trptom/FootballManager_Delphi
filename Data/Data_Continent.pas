@@ -1,11 +1,11 @@
-unit Continent;
+unit Data_Continent;
 
 interface
 
 uses
   SysUtils, Classes,
 
-  State, Serializable;
+  Data_State, Data_Serializable;
 
 type
   PContinent = ^CContinent;

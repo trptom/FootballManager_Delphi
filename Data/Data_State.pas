@@ -1,9 +1,11 @@
-unit State;
+unit Data_State;
 
 interface
 
 uses
-  SysUtils, Classes, Constants;
+  SysUtils, Classes,
+
+  _Constants;
 
 type
   PState = ^CState;
@@ -21,11 +23,20 @@ type
     destructor Destroy; override;
   end;
 
+  TStatesList = class(TList)
+  private
+    function Get(Index: Integer): CState;
+  public
+    destructor Destroy; override;
+    function Add(Value: CState): Integer;
+    property Items[Index: Integer]: CState read Get; default;
+  end;
+
 implementation
 
 {------------------------------------------------------------------------------}
 
-function TStatesList.Add(Value: PState): Integer;
+function TStatesList.Add(Value: CState): Integer;
 begin
   Result := inherited Add(Value);
 end;
@@ -35,13 +46,13 @@ var
   i: Integer;
 begin
   for i := 0 to Count - 1 do
-    FreeMem(Items[i]);
+    Items[i].Destroy;
   inherited;
 end;
 
-function TStatesList.Get(Index: Integer): PState;
+function TStatesList.Get(Index: Integer): CState;
 begin
-  Result := PState(inherited Get(Index));
+  Result := CState(inherited Get(Index));
 end;
 
 {------------------------------------------------------------------------------}

@@ -3,8 +3,11 @@ unit Panel_Examples;
 interface
 
 uses
-  PagePanel, Classes, SelectTeamPanel, World, Continent, Controls, Graphics,
-  Types, Forms, Dialogs;
+  PagePanel, Classes, Controls, Graphics, Types, Forms, Dialogs,
+
+  Data_World, Data_Continent,
+
+  Component_SelectTeamPanel,
 
 type
   TPanel_Examples = class(TPagePanel)
@@ -33,14 +36,12 @@ begin
   Self.stp.Width := Self.Width-20;
   Self.stp.Height := Self.Height-20;
   Self.stp.Anchors := [ akLeft, akTop, akRight, akBottom ];
-  Self.stp.Color := clBlue;
 
   Self.InsertControl(Self.stp);
 end;
 
 procedure TPanel_Examples.beforeShow;
 begin
-  showmessage('updating');
   Self.stp.updateComponent;
 end;
 

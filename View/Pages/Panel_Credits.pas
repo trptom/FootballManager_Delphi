@@ -3,11 +3,11 @@ unit Panel_Credits;
 interface
 
 uses
-  Forms, Classes, StdCtrls, Controls, Dialogs,
-  Utils, ExtCtrls, Constants,
+  Forms, Classes, StdCtrls, Controls, Dialogs, ExtCtrls,
 
-  PagePanel,
-  Component_Button;
+  _Utils, _Constants,
+
+  Component_PagePanel, Component_Button;
 
 type
   TPanel_Credits = class(TPagePanel)

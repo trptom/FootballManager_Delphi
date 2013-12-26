@@ -1,4 +1,4 @@
-unit Continent;
+unit Data_Continent;
 
 interface
 
@@ -48,7 +48,7 @@ var
   i: Integer;
 begin
   for i := 0 to Count - 1 do
-    Items[i].;
+    Items[i].Destroy;
   inherited;
 end;
 

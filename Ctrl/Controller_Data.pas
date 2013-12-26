@@ -1,11 +1,11 @@
-unit DataController;
+unit Controller_Data;
 
 interface
 
 uses
   Windows, SysUtils, Classes,
 
-  Serializable;
+  Data_Serializable;
 
 type
   CDataController = class
@@ -17,7 +17,6 @@ implementation
 class function CDataController.save(data: CSerializable): integer;
 var
   f: TextFile;
-  fs:TFileStream;
 begin
 {  fs.Create('out.txt', fmOpenWrite);
   fs.Write(data, 1);

@@ -1,4 +1,4 @@
-unit GridPanel;
+unit Component_GridPanel;
 
 interface
 
@@ -38,8 +38,6 @@ procedure TGridPanel.recount;
 var
   id, a, b, w, h, endW, endH: integer;
 begin
-  ShowMessage(IntTOStr(Self.Width));
-
   w := round(100 / Self.cols);
   h := round(100 / Self.rows);
 

@@ -3,10 +3,11 @@ unit Panel_GameSettings;
 interface
 
 uses
-  Forms, Classes, StdCtrls, Controls,
-  Utils, ExtCtrls,
+  Forms, Classes, StdCtrls, Controls, ExtCtrls,
+
+  _Utils,
   
-  PagePanel;
+  Component_PagePanel;
 
 type
   TPanel_GameSettings = class(TPagePanel)

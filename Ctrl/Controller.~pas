@@ -12,11 +12,6 @@ type
     procedure setScreen(screen: TPagePanel);
   end;
 
-  TPageController = class(TController)
-  public
-    function createPage:TPagePanel; virtual; abstract;
-  end;
-
 implementation
 
 procedure TController.setScreen(screen: TPagePanel);

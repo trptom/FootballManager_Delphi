@@ -1,4 +1,4 @@
-unit AutosizeTable;
+unit Component_AutosizeTable;
 
 interface
 

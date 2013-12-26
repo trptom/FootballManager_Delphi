@@ -3,7 +3,11 @@ unit Controller;
 interface
 
 uses
-  Main, Panel_MainMenu, Dialogs, PagePanel;
+  Main, Dialogs,
+
+  Component_PagePanel,
+
+  Panel_MainMenu;
 
 type
   TController = class

@@ -4,7 +4,9 @@ interface
 
 uses
   Forms, Classes, StdCtrls, Controls, SysUtils, Dialogs, Graphics,
-  Utils, ExtCtrls, Constants, MPlayer, WMP, Types, Math,
+  ExtCtrls, MPlayer, Types, Math,
+
+  _Utils, _Constants,
 
   PagePanel,
   Component_Button;
@@ -71,6 +73,7 @@ end;
 
 procedure TPanel_Intro.stop;
 begin
+  // nejdriv ze vseho disabluju timer, aby to nehazelo errory
   Self.timer.Enabled := false;
 
   Player.Stop;

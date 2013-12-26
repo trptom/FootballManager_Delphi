@@ -1,8 +1,13 @@
-unit PageController;
+unit Controller_Page;
 
 interface
 
-uses Main, Controller, PagePanel, Dialogs, SysUtils,
+uses Main, Dialogs, SysUtils,
+
+  Controller,
+
+  Component_PagePanel,
+
   Panel_MainMenu, Panel_Credits, Panel_Intro, Panel_Examples;
 
 type
@@ -62,7 +67,7 @@ end;
 
 procedure TPageController_MainMenu.but_loadGame_click(Sender: TObject);
 begin
-  showMessage(IntToStr(MainForm.clientWidth));
+  Self.setScreen(SCREENS.examples);
 end;
 
 procedure TPageController_MainMenu.but_credits_click(Sender: TObject);

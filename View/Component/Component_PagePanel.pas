@@ -1,9 +1,11 @@
-unit PagePanel;
+unit Component_PagePanel;
 
 interface
 
 uses
-  Forms, ExtCtrls, Classes, Controls, Graphics, Types, Jpeg, Constants;
+  Forms, ExtCtrls, Classes, Controls, Graphics, Types, Jpeg,
+
+  _Constants;
 
 type
   TPagePanel = class(TPanel)
@@ -61,6 +63,16 @@ begin
   if (Self.bgImage <> nil) then begin
     Canvas.StretchDraw(bgCoords, Self.bgImage.Graphic);
   end;
+end;
+
+procedure TPagePanel.beforeShow;
+begin
+  // nothing to do (by default) - can be overriden
+end;
+
+procedure TPagePanel.afterShow;
+begin
+  // nothing to do (by default) - can be overriden
 end;
 
 end.
