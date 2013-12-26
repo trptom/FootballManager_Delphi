@@ -26,6 +26,7 @@ type
   end;
 
   TMainForm = class(TForm)
+    ComboBox1: TComboBox;
     procedure FormCreate(Sender: TObject);
   private
   public
@@ -42,18 +43,15 @@ implementation
 
 procedure TMainForm.setScreen(screen: TPagePanel);
 begin
+  screen.beforeShow();
+
   // hide old
   hideAllControls(Self);
 
-  // set size of current frame
-  screen.Left := 0;
-  screen.Top := 0;
-  screen.Width := Self.ClientWidth;
-  screen.Height := Self.ClientHeight;
-
   // show new
   screen.Visible := true;
-  
+
+  screen.afterShow();
 end;
 
 procedure TMainForm.FormCreate(Sender: TObject);

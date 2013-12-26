@@ -10,6 +10,9 @@ type
   private
     bgImage: TPicture;
   public
+    procedure beforeShow; virtual;
+    procedure afterShow; virtual;
+
     constructor create(AOwner: TForm); overload;
     constructor create(AOwner: TForm; bgImage: string); overload;
     procedure Paint; override;
@@ -29,7 +32,6 @@ begin
   Self.Anchors := [ akLeft, akTop, akRight, akBottom ];
   Self.BevelInner := bvNone;
   Self.BevelOuter := bvNone;
-  Self.BevelWidth := 0;
   Self.Ctl3D := false;
   Self.Left := 0;
   Self.Top := 0;

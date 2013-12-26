@@ -3,7 +3,8 @@ unit Panel_Examples;
 interface
 
 uses
-  PagePanel, Classes, SelectTeamPanel, World, Continent;
+  PagePanel, Classes, SelectTeamPanel, World, Continent, Controls, Graphics,
+  Types, Forms, Dialogs;
 
 type
   TPanel_Examples = class(TPagePanel)
@@ -12,26 +13,35 @@ type
     wld: CWorld;
     stp: TSelectTeamPanel;
   public
-    constructor Create(AOwner: TComponent); override;
+    constructor Create(AOwner: TForm);
+    procedure beforeShow; override;
   end;
 
 implementation
 
-constructor TPanel_Examples.Create(AOwner: TComponent);
+constructor TPanel_Examples.Create(AOwner: TForm);
 begin
   inherited Create(AOwner);
 
   Self.wld := CWorld.create;
-  Self.wld.continents.Add(@(CContinent.create('aaaaa', 'aaaa', 'aaa')));
+  Self.wld.continents.Add(CContinent.create('aaaaa', 'aaaa', 'aaa'));
+  Self.wld.continents.Add(CContinent.create('bbbbb', 'bbbb', 'bbb'));
 
   Self.stp := TSelectTeamPanel.Create(Self, @(Self.wld));
-  Self.stp.Left := 0;
-  Self.stp.Top := 0;
-  Self.stp.Width := Self.Width;
-  Self.stp.Height := Self.Height;
-  Self.stp.Anchors := [];
+  Self.stp.Left := 10;
+  Self.stp.Top := 10;
+  Self.stp.Width := Self.Width-20;
+  Self.stp.Height := Self.Height-20;
+  Self.stp.Anchors := [ akLeft, akTop, akRight, akBottom ];
+  Self.stp.Color := clBlue;
 
-  Self.InsertControl(stp);
+  Self.InsertControl(Self.stp);
+end;
+
+procedure TPanel_Examples.beforeShow;
+begin
+  showmessage('updating');
+  Self.stp.updateComponent;
 end;
 
 end.

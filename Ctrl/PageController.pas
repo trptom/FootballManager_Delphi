@@ -62,7 +62,7 @@ end;
 
 procedure TPageController_MainMenu.but_loadGame_click(Sender: TObject);
 begin
-  showMessage(IntToStr(MainForm.clientWidth));
+  Self.setScreen(SCREENS.examples);
 end;
 
 procedure TPageController_MainMenu.but_credits_click(Sender: TObject);

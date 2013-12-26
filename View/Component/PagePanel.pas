@@ -10,6 +10,9 @@ type
   private
     bgImage: TPicture;
   public
+    procedure beforeShow; virtual;
+    procedure afterShow; virtual;
+
     constructor create(AOwner: TForm); overload;
     constructor create(AOwner: TForm; bgImage: string); overload;
     procedure Paint; override;
@@ -58,6 +61,16 @@ begin
   if (Self.bgImage <> nil) then begin
     Canvas.StretchDraw(bgCoords, Self.bgImage.Graphic);
   end;
+end;
+
+procedure TPagePanel.beforeShow;
+begin
+  // nothing to do (by default) - can be overriden
+end;
+
+procedure TPagePanel.afterShow;
+begin
+  // nothing to do (by default) - can be overriden
 end;
 
 end.

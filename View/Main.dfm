@@ -18,13 +18,13 @@ object MainForm: TMainForm
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object Panel1: TPanel
-    Left = 160
-    Top = 160
-    Width = 185
-    Height = 41
-    BevelOuter = bvNone
-    Caption = 'Panel1'
+  object ComboBox1: TComboBox
+    Left = 136
+    Top = 104
+    Width = 145
+    Height = 21
+    ItemHeight = 13
     TabOrder = 0
+    Text = 'ComboBox1'
   end
 end

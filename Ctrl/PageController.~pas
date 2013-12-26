@@ -82,7 +82,7 @@ end;
 
 procedure TPageController_Credits.but_mainMenu_click(Sender: TObject);
 begin
-  //MainForm.setScreen(SCREENS.mainMenu);
+  MainForm.setScreen(SCREENS.mainMenu);
 end;
 
 function TPageController_Credits.createPage:TPanel_Credits;
