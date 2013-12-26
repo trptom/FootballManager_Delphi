@@ -23,7 +23,7 @@ type
 
   TIDCounterList = class(TList)
   private
-    private newItem: CIDCounterMap;
+    private newItem: TIDCounterMap;
     function Get(Index: Integer): PIDCounterMap;
   public
     destructor Destroy; override;
@@ -33,7 +33,7 @@ type
     function findByClassName(className: string): PIDCounterMap;
   end;
 
-  TIDEntity = class(CSerializable)
+  TIDEntity = class(TSerializable)
   private
     id: integer;
 
@@ -60,7 +60,7 @@ end;
 
 function TIDCounterList.Add(className: string): Integer;
 begin
-  Self.newItem := CIDCounterMap.create(className);
+  Self.newItem := TIDCounterMap.create(className);
   Self.Add(@Self.newItem);
 
   result := 0;
@@ -127,7 +127,7 @@ var
   counter: PIDCounterMap;
 begin
   if idCounters = nil then begin
-    idCounters := CIDCounterList.Create;
+    idCounters := TIDCounterList.Create;
   end;
 
   counter := idCounters.findByClassName(Self.ClassName);

@@ -9,12 +9,12 @@ uses
 
 type
   CDataController = class
-    class function save(data: CSerializable): integer;
+    class function save(data: TSerializable): integer;
   end;
 
 implementation
 
-class function CDataController.save(data: CSerializable): integer;
+class function CDataController.save(data: TSerializable): integer;
 var
   f: TextFile;
 begin

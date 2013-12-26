@@ -8,9 +8,9 @@ uses
   Data_State, Data_Serializable;
 
 type
-  PContinent = ^CContinent;
+  PContinent = ^TContinent;
 
-  CContinent = class(CSerializable)
+  TContinent = class(CSerializable)
   private
   public
     name, shortName, shortcut: string;
@@ -27,18 +27,18 @@ type
 
   TContinentsList = class(TList)
   private
-    function Get(Index: Integer): CContinent;
+    function Get(Index: Integer): TContinent;
   public
     destructor Destroy; override;
-    function Add(Value: CContinent): Integer;
-    property Items[Index: Integer]: CContinent read Get; default;
+    function Add(Value: TContinent): Integer;
+    property Items[Index: Integer]: TContinent read Get; default;
   end;
 
 implementation
 
 {------------------------------------------------------------------------------}
 
-function TContinentsList.Add(Value: CContinent): Integer;
+function TContinentsList.Add(Value: TContinent): Integer;
 begin
   Result := inherited Add(Value);
 end;
@@ -52,14 +52,14 @@ begin
   inherited;
 end;
 
-function TContinentsList.Get(Index: Integer): CContinent;
+function TContinentsList.Get(Index: Integer): TContinent;
 begin
-  Result := CContinent(inherited Get(Index));
+  Result := TContinent(inherited Get(Index));
 end;
 
 {------------------------------------------------------------------------------}
 
-constructor CContinent.create(name, shortName, shortcut: string);
+constructor TContinent.create(name, shortName, shortcut: string);
 begin
   Self.name := name;
   Self.shortName := shortName;
@@ -68,7 +68,7 @@ begin
   Self.states := TStatesList.Create;
 end;
 
-destructor CContinent.Destroy;
+destructor TContinent.Destroy;
 var
   a:integer;
 begin
@@ -80,14 +80,14 @@ begin
   inherited;
 end;
 
-function CContinent.serialize: string;
+function TContinent.serialize: string;
 begin
   // TODO revize
 
   result := '';
 end;
 
-function CContinent.deserialize: string;
+function TContinent.deserialize: string;
 begin
   // TODO revize
 

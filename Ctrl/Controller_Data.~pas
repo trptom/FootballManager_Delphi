@@ -5,7 +5,7 @@ interface
 uses
   Windows, SysUtils, Classes,
 
-  Serializable;
+  Data_Serializable;
 
 type
   CDataController = class

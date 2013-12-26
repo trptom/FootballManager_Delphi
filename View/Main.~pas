@@ -37,7 +37,7 @@ type
 var
   MainForm: TMainForm;
   SCREENS: TScreens;
-  Fout: File of TWorld;
+  Fout: File of CWorld;
 
 implementation
 

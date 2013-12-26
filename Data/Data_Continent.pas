@@ -10,7 +10,7 @@ uses
 type
   PContinent = ^TContinent;
 
-  TContinent = class(CSerializable)
+  TContinent = class(TSerializable)
   private
   public
     name, shortName, shortcut: string;

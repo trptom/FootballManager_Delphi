@@ -8,9 +8,9 @@ uses
   _Constants;
 
 type
-  PState = ^CState;
+  PState = ^TState;
 
-  CState = class
+  TState = class
   private
     function getFlagFile(): string;
   public
@@ -25,18 +25,18 @@ type
 
   TStatesList = class(TList)
   private
-    function Get(Index: Integer): CState;
+    function Get(Index: Integer): TState;
   public
     destructor Destroy; override;
-    function Add(Value: CState): Integer;
-    property Items[Index: Integer]: CState read Get; default;
+    function Add(Value: TState): Integer;
+    property Items[Index: Integer]: TState read Get; default;
   end;
 
 implementation
 
 {------------------------------------------------------------------------------}
 
-function TStatesList.Add(Value: CState): Integer;
+function TStatesList.Add(Value: TState): Integer;
 begin
   Result := inherited Add(Value);
 end;
@@ -50,21 +50,21 @@ begin
   inherited;
 end;
 
-function TStatesList.Get(Index: Integer): CState;
+function TStatesList.Get(Index: Integer): TState;
 begin
-  Result := CState(inherited Get(Index));
+  Result := TState(inherited Get(Index));
 end;
 
 {------------------------------------------------------------------------------}
 
-constructor CState.create(name, shortName, shortcut: string);
+constructor TState.create(name, shortName, shortcut: string);
 begin
   Self.name := name;
   Self.shortName := shortName;
   Self.shortcut := shortcut;
 end;
 
-destructor CState.Destroy;
+destructor TState.Destroy;
 var
   i: Integer;
 begin
@@ -73,7 +73,7 @@ begin
   inherited;
 end;
 
-function CState.getFlagFile(): string;
+function TState.getFlagFile(): string;
 begin
   result := _IMAGES_FOLDER + 'flags/' + Self.flagFile;
 end;

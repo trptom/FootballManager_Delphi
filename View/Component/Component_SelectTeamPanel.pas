@@ -73,7 +73,7 @@ procedure TSelectTeamPanel.updateComponent;
 var
   a: integer;
   but: TButton;
-  cont: CContinent;
+  cont: TContinent;
 begin
 
   while Self.panel_butons.ControlCount > 0 do begin

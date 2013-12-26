@@ -3,7 +3,9 @@ unit Data_State;
 interface
 
 uses
-  SysUtils, Classes, Constants;
+  SysUtils, Classes,
+
+  _Constants;
 
 type
   PState = ^CState;

@@ -3,7 +3,7 @@ unit Data_Serializable;
 interface
 
 type
-  CSerializable = class
+  TSerializable = class
   public
     function serialize: string; dynamic; abstract;
     function deserialize: string; dynamic; abstract;
@@ -13,7 +13,7 @@ type
 
 implementation
 
-constructor CSerializable.create;
+constructor TSerializable.create;
 begin
   inherited;
 end;

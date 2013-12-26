@@ -7,7 +7,7 @@ uses
 
   Data_World, Data_Continent,
 
-  Component_GridPanel
+  Component_GridPanel;
 
 type
   TSelectTeamPanel = class(TPanel)

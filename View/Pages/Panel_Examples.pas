@@ -13,7 +13,7 @@ type
   TPanel_Examples = class(TPagePanel)
 
   private
-    wld: CWorld;
+    wld: TWorld;
     stp: TSelectTeamPanel;
   public
     constructor Create(AOwner: TForm);
@@ -26,9 +26,9 @@ constructor TPanel_Examples.Create(AOwner: TForm);
 begin
   inherited Create(AOwner);
 
-  Self.wld := CWorld.create;
-  Self.wld.continents.Add(CContinent.create('aaaaa', 'aaaa', 'aaa'));
-  Self.wld.continents.Add(CContinent.create('bbbbb', 'bbbb', 'bbb'));
+  Self.wld := TWorld.create;
+  Self.wld.continents.Add(TContinent.create('aaaaa', 'aaaa', 'aaa'));
+  Self.wld.continents.Add(TContinent.create('bbbbb', 'bbbb', 'bbb'));
 
   Self.stp := TSelectTeamPanel.Create(Self, @(Self.wld));
   Self.stp.Left := 10;

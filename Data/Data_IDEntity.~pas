@@ -9,11 +9,11 @@ uses
   Data_Serializable;
 
 type
-  PIDCounterMap = ^CIDCounterMap;
-  PIDEntity = ^CIDEntity;
-  PIDCounterList = ^CIDCounterList;
+  PIDCounterMap = ^TIDCounterMap;
+  PIDEntity = ^TIDEntity;
+  PIDCounterList = ^TIDCounterList;
 
-  CIDCounterMap = class
+  TIDCounterMap = class
   public
     className: string;
     id: integer;
@@ -21,7 +21,7 @@ type
     constructor create(className: string);
   end;
 
-  CIDCounterList = class(TList)
+  TIDCounterList = class(TList)
   private
     private newItem: CIDCounterMap;
     function Get(Index: Integer): PIDCounterMap;
@@ -33,7 +33,7 @@ type
     function findByClassName(className: string): PIDCounterMap;
   end;
 
-  CIDEntity = class(CSerializable)
+  TIDEntity = class(CSerializable)
   private
     id: integer;
 
@@ -45,20 +45,20 @@ type
   end;
 
 var
-  idCounters: CIDCounterList;
+  idCounters: TIDCounterList;
 
 implementation
 
 {------------------------------------------------------------------------------}
 
-constructor CIDCounterMap.create(className: string);
+constructor TIDCounterMap.create(className: string);
 begin
   Self.className := className;
 end;
 
 {------------------------------------------------------------------------------}
 
-function CIDCounterList.Add(className: string): Integer;
+function TIDCounterList.Add(className: string): Integer;
 begin
   Self.newItem := CIDCounterMap.create(className);
   Self.Add(@Self.newItem);
@@ -66,12 +66,12 @@ begin
   result := 0;
 end;
 
-function CIDCounterList.Add(Value: PIDCounterMap): Integer;
+function TIDCounterList.Add(Value: PIDCounterMap): Integer;
 begin
   Result := inherited Add(Value);
 end;
 
-destructor CIDCounterList.Destroy;
+destructor TIDCounterList.Destroy;
 var
   i: Integer;
 begin
@@ -80,12 +80,12 @@ begin
   inherited;
 end;
 
-function CIDCounterList.Get(Index: Integer): PIDCounterMap;
+function TIDCounterList.Get(Index: Integer): PIDCounterMap;
 begin
   Result := PIDCounterMap(inherited Get(Index));
 end;
 
-function CIDCounterList.findByClassName(className: string): PIDCounterMap;
+function TIDCounterList.findByClassName(className: string): PIDCounterMap;
 var
   i: Integer;
 begin
@@ -99,7 +99,7 @@ end;
 
 {------------------------------------------------------------------------------}
 
-constructor CIDEntity.create;
+constructor TIDEntity.create;
 var
   counter: PIDCounterMap;
 begin
@@ -110,7 +110,7 @@ begin
   Self.id := counter^.id;
 end;
 
-constructor CIDEntity.create(id: integer);
+constructor TIDEntity.create(id: integer);
 var
   counter: PIDCounterMap;
 begin
@@ -122,7 +122,7 @@ begin
   end;
 end;
 
-function CIDEntity.findOrCreateCounter(): PIDCounterMap;
+function TIDEntity.findOrCreateCounter(): PIDCounterMap;
 var
   counter: PIDCounterMap;
 begin
@@ -139,7 +139,7 @@ begin
   result := counter;
 end;
 
-function CIDEntity.getId(): integer;
+function TIDEntity.getId(): integer;
 begin
   result := Self.id;
 end;
