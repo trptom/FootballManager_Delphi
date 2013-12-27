@@ -8,42 +8,49 @@ uses
   Data_Continent, Data_IDEntity;
 
 type
-  PWorld = ^CWorld;
+  PWorld = ^TWorld;
 
-  CWorld = class(CIDEntity)
+  TWorld = class(TIDEntity)
   private
   
   public
     continents: TContinentsList;
-    
+
     constructor create; overload;
+    constructor create(f: TextFile); overload;
     constructor create(id: integer); overload;
 
     destructor Destroy; override;
 
-    function serialize: string; override;
-    function deserialize: string; override;
+    procedure saveAsText(var f: TextFile); override;
+    procedure readAsText(var f: TextFile); override;
+    function getSaveSize(): integer;
   end;
 
-var pokus:CWorld;
+var pokus:TWorld;
 
 implementation
 
-constructor CWorld.create;
+constructor TWorld.create;
 begin
   inherited;
-
   continents := TContinentsList.create;
 end;
 
-constructor CWorld.create(id: integer);
+constructor TWorld.create(var f: TextFile);
+begin
+  inherited;
+  continents := TContinentsList.create;
+  Self.readAsText(f);
+end;
+
+constructor TWorld.create(id: integer);
 begin
   inherited Create(id);
-
   continents := TContinentsList.create;
 end;
 
-destructor CWorld.Destroy;
+destructor TWorld.Destroy;
 var
   a:integer;
 begin
@@ -55,18 +62,34 @@ begin
   inherited;
 end;
 
-function CWorld.serialize: string;
+procedure TWorld.saveAsText(var f: TextFile);
+var
+  a: integer;
 begin
-  // TODO revize
-
-  result := 'Svet';
+  Writeln(f, IntToStr(Self.Continents.Count));
+  for a := 0 to Self.continents.Count-1 do begin
+    Self.continents[a].saveAsText(f);
+  end;
 end;
 
-function CWorld.deserialize: string;
+procedure TWorld.readAsText(var f: TextFile);
+var
+  a, continentsCount: integer;
 begin
-  // TODO revize
+  Readln(f, continentsCount);
+  for a := 0 to continentsCount-1 do begin
+    Self.continents.Add(TContinent.create(f));
+  end;
+end;
 
-  result := '';
+function TWorld.getSaveSize: integer;
+var
+  a: integer;
+begin
+  result := 1;
+  for a := 0 to Self.continents.Count-1 do begin
+    result := result + Self.continents[a].getSaveSize;
+  end;
 end;
 
 end.

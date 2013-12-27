@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, ExtCtrls, MPlayer,
 
-  _Utils,
+  _Utils, _Constants,
 
   Data_World, Data_Continent, Data_State,
 
@@ -37,7 +37,7 @@ type
 var
   MainForm: TMainForm;
   SCREENS: TScreens;
-  Fout: File of CWorld;
+  Fout: File of TContinent;
 
 implementation
 
@@ -59,8 +59,31 @@ begin
 end;
 
 procedure TMainForm.FormCreate(Sender: TObject);
+var
+  wld: TWorld;
+  cnt: TContinent;
+  ctrl: TDataController;
+  f: TextFile;
 begin
   Self.DoubleBuffered := true;
+
+  // pokus nacitani
+  EnDecryptFile('out.txt', '__out.txt', 10);
+  AssignFile(f, '__out.txt');
+  Reset(f);
+  wld := TWorld.create(f);
+  showmessage(inttostr(wld.continents.count));
+  ShowMessage(wld.continents[0].name);
+  CloseFile(f);
+
+  // pokus ukladani
+  ctrl := TDataController.Create;
+  wld := TWorld.create;
+  wld.continents.Add(TContinent.create('Evropa', 'Evropa', 'EUR'));
+  wld.continents[0].states.Add(TState.create('Èeská republika', 'Èeská rep.', 'CZE'));
+
+  ctrl.save(wld, _DATA_FOLDER + 'save/xxx');
+  EnDecryptFile('_out.txt', 'out.txt', 10);
 end;
 
 end.

@@ -44,6 +44,15 @@ type
     constructor create(id: integer); overload;
   end;
 
+  TIDEntityWithParent = class(TIDEntity)
+  private
+    parent: PIDEntity;
+  public
+    function getParent: PIDEntity;
+    constructor create(parent: PIDEntity); overload;
+    constructor create(id: integer; parent: PIDEntity); overload;
+  end;
+
 var
   idCounters: TIDCounterList;
 
@@ -142,6 +151,27 @@ end;
 function TIDEntity.getId(): integer;
 begin
   result := Self.id;
+end;
+
+{------------------------------------------------------------------------------}
+
+function TIDEntityWithParent.getParent: PIDEntity;
+begin
+  result := Self.parent;
+end;
+
+constructor TIDEntityWithParent.create(parent: PIDEntity);
+begin
+  inherited create;
+
+  Self.parent := parent;
+end;
+
+constructor TIDEntityWithParent.create(id: integer; parent: PIDEntity);
+begin
+  inherited create(id);
+
+  Self.parent := parent;
 end;
 
 end.

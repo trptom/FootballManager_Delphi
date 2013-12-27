@@ -20,6 +20,7 @@ procedure split(delimiter: Char; str: string; listOfStrings: TStrings);
 procedure setPercPositionInCtrl(component: TControl; left,top,left2,top2: integer);
 function removeAllControls(component: TWinControl): integer;
 procedure hideAllControls(component: TWinControl);
+procedure EnDecryptFile(pathin, pathout: string; Chave: Word);
 
 implementation
 
@@ -64,6 +65,30 @@ var
 begin
   for a := 1 to component.ControlCount do begin
     component.Controls[a-1].Visible := false;
+  end;
+end;
+
+procedure EnDecryptFile(pathin, pathout: string; Chave: Word);
+var
+  InMS, OutMS: TMemoryStream;
+  cnt: Integer;
+  C: byte;
+begin
+  InMS := TMemoryStream.Create;
+  OutMS := TMemoryStream.Create;
+  try
+    InMS.LoadFromFile(pathin) ;
+    InMS.Position := 0;
+    for cnt := 0 to InMS.Size - 1 do
+      begin
+        InMS.Read(C, 1) ;
+        C := (C xor not (ord(chave shr cnt))) ;
+        OutMS.Write(C, 1) ;
+      end;
+    OutMS.SaveToFile(pathout) ;
+  finally
+    InMS.Free;
+    OutMS.Free;
   end;
 end;
 

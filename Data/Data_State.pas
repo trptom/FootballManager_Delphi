@@ -5,12 +5,14 @@ interface
 uses
   SysUtils, Classes,
 
-  _Constants;
+  _Constants,
+
+  Data_IDEntity;
 
 type
   PState = ^TState;
 
-  TState = class
+  TState = class(TIDEntity)
   private
     function getFlagFile(): string;
   public
@@ -18,9 +20,14 @@ type
 
     property flagFile: string read getFlagFile;
 
-    constructor create(name, shortName, shortcut: string);
+    constructor create(var f: TextFile); overload;
+    constructor create(name, shortName, shortcut: string); overload;
 
     destructor Destroy; override;
+
+    procedure saveAsText(var f: TextFile); override;
+    procedure readAsText(var f: TextFile); override;
+    function getSaveSize(): integer;
   end;
 
   TStatesList = class(TList)
@@ -57,6 +64,11 @@ end;
 
 {------------------------------------------------------------------------------}
 
+constructor TState.create(var f: TextFile);
+begin
+  Self.readAsText(f);
+end;
+
 constructor TState.create(name, shortName, shortcut: string);
 begin
   Self.name := name;
@@ -76,6 +88,37 @@ end;
 function TState.getFlagFile(): string;
 begin
   result := _IMAGES_FOLDER + 'flags/' + Self.flagFile;
+end;
+
+procedure TState.saveAsText(var f: TextFile);
+var
+  a: integer;
+begin
+  Writeln(f, Self.name);
+  Writeln(f, Self.shortName);
+  Writeln(f, Self.shortcut);
+  // TODO
+end;
+
+procedure TState.readAsText(var f: TextFile);
+var
+  a, statesCount: integer;
+begin
+  Readln(f, Self.name);
+  Readln(f, Self.shortName);
+  Readln(f, Self.shortcut);
+  // TODO
+end;
+
+function TState.getSaveSize: integer;
+var
+  a: integer;
+begin
+  result := 1;
+  // TODO
+  {for a := 0 to Self.states.Count-1 do begin
+    sum := sum + Self.states[a].getSaveSize;
+  end;}
 end;
 
 end.

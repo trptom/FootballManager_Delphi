@@ -5,11 +5,16 @@ interface
 type
   TSerializable = class
   public
-    function serialize: string; dynamic; abstract;
-    function deserialize: string; dynamic; abstract;
+    procedure saveAsText(var f: TextFile); dynamic; abstract;
+    procedure readAsText(var f: TextFile); dynamic; abstract;
+    function getSaveSize(): integer; dynamic; abstract;
 
     constructor create;
   end;
+
+var
+  SAVE_STREAM: TextFile;
+  OPEN_STREAM: TextFile;
 
 implementation
 

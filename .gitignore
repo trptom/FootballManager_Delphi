@@ -9,3 +9,5 @@ __history
 *.dll
 bin/*
 /_data/video/intro.wmv
+/_data/save/*.sav
+/_data/save/*.tmp

@@ -5,26 +5,27 @@ interface
 uses
   Windows, SysUtils, Classes,
 
+  _Utils,
+
   Data_Serializable;
 
 type
-  CDataController = class
-    class function save(data: TSerializable): integer;
+  TDataController = class
+    class function save(data: TSerializable; fileName: string): integer;
   end;
 
 implementation
 
-class function CDataController.save(data: TSerializable): integer;
+class function TDataController.save(data: TSerializable; fileName: string): integer;
 var
   f: TextFile;
 begin
-{  fs.Create('out.txt', fmOpenWrite);
-  fs.Write(data, 1);
-  fs.Free;}
-  AssignFile(f, 'out.txt');
+  AssignFile(f, fileName + '.tmp');
   Rewrite(f);
-  Write(f, data.serialize);
+  data.saveAsText(f);
   CloseFile(f);
+
+  EnDecryptFile(fileName + '.tmp', fileName, 1);
 
   result := 0;
 end;

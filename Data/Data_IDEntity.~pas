@@ -23,7 +23,7 @@ type
 
   TIDCounterList = class(TList)
   private
-    private newItem: CIDCounterMap;
+    private newItem: TIDCounterMap;
     function Get(Index: Integer): PIDCounterMap;
   public
     destructor Destroy; override;
@@ -33,7 +33,7 @@ type
     function findByClassName(className: string): PIDCounterMap;
   end;
 
-  TIDEntity = class(CSerializable)
+  TIDEntity = class(TSerializable)
   private
     id: integer;
 
@@ -42,6 +42,15 @@ type
     function getId: integer;
     constructor create; overload;
     constructor create(id: integer); overload;
+  end;
+
+  TIDEntityWithParent = class(TIDEntity)
+  private
+    parent: PIDEntity;
+  public
+    function getParent: PIDEntity;
+    constructor create(parent: PIDEntity); overload;
+    constructor create(id: integer; parent: PIDEntity); overload;
   end;
 
 var
@@ -60,7 +69,7 @@ end;
 
 function TIDCounterList.Add(className: string): Integer;
 begin
-  Self.newItem := CIDCounterMap.create(className);
+  Self.newItem := TIDCounterMap.create(className);
   Self.Add(@Self.newItem);
 
   result := 0;
@@ -127,7 +136,7 @@ var
   counter: PIDCounterMap;
 begin
   if idCounters = nil then begin
-    idCounters := CIDCounterList.Create;
+    idCounters := TIDCounterList.Create;
   end;
 
   counter := idCounters.findByClassName(Self.ClassName);
@@ -142,6 +151,27 @@ end;
 function TIDEntity.getId(): integer;
 begin
   result := Self.id;
+end;
+
+{------------------------------------------------------------------------------}
+
+function TIDEntityWithParent.getParent: TIDEntity;
+begin
+  result := Self.parent;
+end;
+
+constructor TIDEntityWithParent.create(parent: TIDEntity);
+begin
+  inherited create;
+
+  Self.parent := parent;
+end;
+
+constructor TIDEntityWithParent.create(id: integer; parent: TIDEntity);
+begin
+  inherited create(id);
+
+  Self.parent := parent;
 end;
 
 end.

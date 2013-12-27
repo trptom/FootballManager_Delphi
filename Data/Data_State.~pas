@@ -5,12 +5,14 @@ interface
 uses
   SysUtils, Classes,
 
-  _Constants;
+  _Constants,
+
+  Data_IDEntity;
 
 type
-  PState = ^CState;
+  PState = ^TState;
 
-  CState = class
+  TState = class(TIDEntity)
   private
     function getFlagFile(): string;
   public
@@ -18,25 +20,30 @@ type
 
     property flagFile: string read getFlagFile;
 
-    constructor create(name, shortName, shortcut: string);
+    constructor create(var f: TextFile); overload;
+    constructor create(name, shortName, shortcut: string); overload;
 
     destructor Destroy; override;
+
+    procedure saveAsText(var f: TextFile); override;
+    procedure readAsText(var f: TextFile); override;
+    function getSaveSize(): integer;
   end;
 
   TStatesList = class(TList)
   private
-    function Get(Index: Integer): CState;
+    function Get(Index: Integer): TState;
   public
     destructor Destroy; override;
-    function Add(Value: CState): Integer;
-    property Items[Index: Integer]: CState read Get; default;
+    function Add(Value: TState): Integer;
+    property Items[Index: Integer]: TState read Get; default;
   end;
 
 implementation
 
 {------------------------------------------------------------------------------}
 
-function TStatesList.Add(Value: CState): Integer;
+function TStatesList.Add(Value: TState): Integer;
 begin
   Result := inherited Add(Value);
 end;
@@ -50,21 +57,26 @@ begin
   inherited;
 end;
 
-function TStatesList.Get(Index: Integer): CState;
+function TStatesList.Get(Index: Integer): TState;
 begin
-  Result := CState(inherited Get(Index));
+  Result := TState(inherited Get(Index));
 end;
 
 {------------------------------------------------------------------------------}
 
-constructor CState.create(name, shortName, shortcut: string);
+constructor TState.create(var f: TextFile);
+begin
+  Self.readAsText(f);
+end;
+
+constructor TState.create(name, shortName, shortcut: string);
 begin
   Self.name := name;
   Self.shortName := shortName;
   Self.shortcut := shortcut;
 end;
 
-destructor CState.Destroy;
+destructor TState.Destroy;
 var
   i: Integer;
 begin
@@ -73,9 +85,40 @@ begin
   inherited;
 end;
 
-function CState.getFlagFile(): string;
+function TState.getFlagFile(): string;
 begin
   result := _IMAGES_FOLDER + 'flags/' + Self.flagFile;
+end;
+
+procedure TState.saveAsText(var f: TextFile);
+var
+  a: integer;
+begin
+  Writeln(f, Self.name);
+  Writeln(f, Self.shortName)
+  Writeln(f, Self.shortcut)
+  // TODO
+end;
+
+procedure TState.readAsText(var f: TextFile);
+var
+  a, statesCount: integer;
+begin
+  Readln(f, Self.name);
+  Readln(f, Self.shortName)
+  Readln(f, Self.shortcut)
+  // TODO
+end;
+
+function TState.getSaveSize: integer;
+var
+  a: integer;
+begin
+  result := 1;
+  // TODO
+  {for a := 0 to Self.states.Count-1 do begin
+    sum := sum + Self.states[a].getSaveSize;
+  end;}
 end;
 
 end.
