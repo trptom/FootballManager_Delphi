@@ -12,10 +12,6 @@ type
     constructor create;
   end;
 
-var
-  SAVE_STREAM: TextFile;
-  OPEN_STREAM: TextFile;
-
 implementation
 
 constructor TSerializable.create;

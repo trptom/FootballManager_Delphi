@@ -9,6 +9,8 @@ const
   _DATA_FOLDER = '_data\';
   _IMAGES_FOLDER = _DATA_FOLDER + 'images\';
   _VIDEO_FOLDER = _DATA_FOLDER + 'video\';
+  _DATABASE_FOLDER = _DATA_FOLDER + 'database\';
+  _SAVE_FOLDER = _DATA_FOLDER + 'save\';
   _SKIN_FOLDER = _IMAGES_FOLDER + 'skin\';
   _DEFAULT_FONT_NAME = 'Times New Roman';
 

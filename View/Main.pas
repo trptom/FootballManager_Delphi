@@ -65,25 +65,6 @@ var
   ctrl: TDataController;
   f: TextFile;
 begin
-  Self.DoubleBuffered := true;
-
-  // pokus nacitani
-  EnDecryptFile('out.txt', '__out.txt', 10);
-  AssignFile(f, '__out.txt');
-  Reset(f);
-  wld := TWorld.create(f);
-  showmessage(inttostr(wld.continents.count));
-  ShowMessage(wld.continents[0].name);
-  CloseFile(f);
-
-  // pokus ukladani
-  ctrl := TDataController.Create;
-  wld := TWorld.create;
-  wld.continents.Add(TContinent.create('Evropa', 'Evropa', 'EUR'));
-  wld.continents[0].states.Add(TState.create('Èeská republika', 'Èeská rep.', 'CZE'));
-
-  ctrl.save(wld, _DATA_FOLDER + 'save\xxx.sav');
-  EnDecryptFile('_out.txt', 'out.txt', 10);
 end;
 
 end.

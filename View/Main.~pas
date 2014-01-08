@@ -82,7 +82,7 @@ begin
   wld.continents.Add(TContinent.create('Evropa', 'Evropa', 'EUR'));
   wld.continents[0].states.Add(TState.create('Èeská republika', 'Èeská rep.', 'CZE'));
 
-  ctrl.save(wld, _DATA_FOLDER + 'save/xxx');
+  ctrl.save(wld, _DATA_FOLDER + 'save\xxx.sav');
   EnDecryptFile('_out.txt', 'out.txt', 10);
 end;
 
