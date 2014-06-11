@@ -1,6 +1,6 @@
 object MainForm: TMainForm
-  Left = 385
-  Top = 149
+  Left = 473
+  Top = 204
   Width = 656
   Height = 544
   Caption = 'TPS Football Manager Editor'

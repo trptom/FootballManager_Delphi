@@ -40,33 +40,13 @@ object MainForm: TMainForm
     object Sheet_World: TTabSheet
       Caption = 'Sheet_World'
       ImageIndex = 1
-      object ButtonedList1: TButtonedList
-        Left = 424
-        Top = 8
-        Width = 185
-        Height = 400
-        BevelOuter = bvNone
-        Caption = 'ButtonedList1'
-        TabOrder = 0
-        Buttons.Strings = (
-          'a'
-          'b'
-          'c'
-          'd'
-          'e')
-        Spacing = 0
-        ButtonsHeight = 25
-        DesignSize = (
-          185
-          400)
-      end
       object ListBox1: TListBox
         Left = 8
         Top = 8
         Width = 217
         Height = 97
         ItemHeight = 13
-        TabOrder = 1
+        TabOrder = 0
       end
     end
     object Sheet_Continent: TTabSheet

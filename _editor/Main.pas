@@ -24,7 +24,6 @@ type
     Sheets: TPageControl;
     Sheet_Game: TTabSheet;
     Sheet_World: TTabSheet;
-    ButtonedList1: TButtonedList;
     ListBox1: TListBox;
     procedure Konec1Click(Sender: TObject);
     procedure Nast1Click(Sender: TObject);
